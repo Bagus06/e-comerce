@@ -1,5 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<div class="container col-md-12" style="background-color: #E65400;">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm" style="text-align: center;">
+      <a href="" class="p-2" style="color:white;">Electronik</a>
+      <a href="" class="p-2" style="color:white;">Cloth</a>
+      <a href="" class="p-2" style="color:white;">Baby Accesories</a>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF5D00;">
+  <a class="navbar-brand" href="#" style="color:white;">My-BAG</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,22 +22,22 @@
 
     </ul>
       <div class="navbar-nav nav-item active">
-        <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px"><span class="badge badge-pill badge-danger"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
+        <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
       </div>
       <div class="navbar-nav nav-item dropdown">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" style="color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="far fa-user-circle"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                                    <i class="far fa-user-circle" style="color: white;"></i> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
