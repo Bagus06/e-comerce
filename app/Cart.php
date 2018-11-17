@@ -27,8 +27,30 @@ class Cart
     	}
     	$storedItem['qty']++;
     	$storedItem['price'] = $item->price * $storedItem['qty'];
+        $storedItem['check'] = true;
     	$this->items[$id] = $storedItem;
     	$this->totalQty++;
     	$this->totalPrice += $item->price;
+    }
+
+    public function remove($price, $qty)
+    {
+        $this->totalQty-=$qty;
+        $this->totalPrice -= $price;
+    }
+
+    public function check($item,$id)
+    {
+        if($item['check']){
+            $item['check'] = false;
+            $this->items[$id] = $item;
+            $this->totalQty--;
+            $this->totalPrice -= $item['price'];
+        }else{
+            $item['check'] = true;
+            $this->items[$id] = $item;
+            $this->totalQty++;
+            $this->totalPrice += $item['price'];
+        }
     }
 }

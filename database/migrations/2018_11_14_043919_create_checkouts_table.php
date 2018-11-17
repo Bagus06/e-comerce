@@ -15,10 +15,11 @@ class CreateCheckoutsTable extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('token');
             $table->integer('jumlah');
             $table->integer('harga');
-            $table->string('addres');
             $table->integer('total');
+            $table->string('addres');
             $table->text('note');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned()->nullable();

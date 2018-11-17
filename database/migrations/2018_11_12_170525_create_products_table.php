@@ -18,10 +18,18 @@ class CreateProductsTable extends Migration
             $table->string('imagePath');
             $table->string('title');
             $table->text('description');
+            $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('qty');
             $table->integer('price');
             $table->timestamps();
+            
+            $table->foreign('type_id')->references('id')->on('types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
+
+
 
     /**
      * Reverse the migrations.

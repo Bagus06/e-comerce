@@ -6,17 +6,25 @@
 <br><br>
 <h3 style="color: #FF5D00;"><strong>Cart</strong></h3>
 <hr>
-	@if(Session::has('cart'))
+	@if(session::has('cart'))
+	@if(count($product)>0)
 		<div class="row col-md-12">
+			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<ul class="list-group">
 					@foreach($product as $p)
 						<li class="list-group-item">
+						<div class="text-right">
+							<div class="custom-control custom-checkbox" style="position: absolute; display: inline-flex; padding: unset;">
+							  <input @if($p['check']) checked="true" @endif type="checkbox" class="custom-control-input" name="check[]" id="customCheck{{$p['item']['id']}}" value="{{$p['item']['id']}}" onclick="location.href='{{URL::to('cartCheck/'.$p['item']['id'])}}'">
+							  <label class="custom-control-label" for="customCheck{{$p['item']['id']}}"></label>
+							</div>
+						</div>	
 						<table>
 							<thead>
 								<tr>
 									<th style="width: 200px"></th>
-									<th style="width: 100px"></th>
+									<th style="width: 150px"></th>
 									<th style="width: 150px"></th>
 									<th></th>
 								</tr>
@@ -25,16 +33,27 @@
 								<tr>
 									<td><img src="{{$p['item']['imagePath']}}" alt="..." class="img-thumbnail" style="width: 160px"></td>
 									<td>
-										<strong>{{ $p['item']['title'] }}</strong>
-										<span class="badge badge-info">{{ $p['qty'] }}</span>
+										<strong>{{ $p['item']['title'] }}</strong><br>
+										<span class="label label-success">Rp.{{ $p['price'] }}.000,00</span>
 									</td>
-									<td><span class="label label-success">Rp.{{ $p['price'] }}.000,00</span></td>
 									<td>
-										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-									    <div class="dropdown-menu">
-									      <a class="dropdown-item" href="#">Reduce By One</a>
-									      <a class="dropdown-item" href="#">Reduce All</a>
-									    </div>
+										<div class="center">
+									      </p><div class="input-group">
+									          <span class="input-group-btn">
+									              <a type="button" class="btn btn-danger btnright" href="{{URL::to('/removeItem/'.$p['item']['id'])}}">
+									                <i class="fas fa-minus"></i>
+									              </a>
+									          </span>
+									          <input type="text" name="qty{{$p['item']['id']}}" class="form-control input-number col-md-4" style="text-align: center;" value="{{ $p['qty'] }}" min="1" max="100" id="qty{{$p['item']['id']}}">
+									          <span class="input-group-btn">
+									              <a type="button" class="btn btn-success btnleft" href="{{URL::to('/addItem/'.$p['item']['id'])}}">
+									                  <i class="fas fa-plus"></i>
+									              </a>
+									          </span>
+									      </div>
+									</td>
+									<td>
+										<a class="btn btn-danger" href="{{URL::to('/delete/'.$p['item']['id'])}}">Delete</a>
 									</td>
 								</tr>
 							</tbody>
@@ -42,24 +61,23 @@
 
 						</li>
 					@endforeach
+					<li class="list-group-item">
+						<div style="padding-left: 20px; padding-bottom: 20px;">
+							<div class="" style="">
+								<div class="text-right">
+									<strong>Total : Rp.{{ $totalPrice }}.000,00</strong>
+									<hr>
+									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
+									    Checkout
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- Modal -->
+					</li>
 				</ul>
 			</div>
 		</div>
-		<div style="padding-left: 20px">
-			<div class="row">
-				<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-					<strong>Total : Rp.{{ $totalPrice }}.000,00</strong>
-				</div>
-			</div>
-			<hr>
-			<div class="row" style="padding-left: 10px">
-				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
-				    Checkout
-				</button>
-			</div>
-		</div>
-
-		<!-- Modal -->
 		<div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
 		     aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
@@ -79,7 +97,7 @@
 		            <!-- Modal Body -->
 		            <div class="modal-body">
 		                
-		                <form role="form" action="{{route('checkout')}}" method="post">
+		                <form role="form" action="{{route('postCheck')}}" method="post">
 		                	@csrf
 		                  <div class="form-group">
 		                    <label for="address">Address</label>
@@ -108,10 +126,10 @@
 		                      </select>
 		                  </div>
 		            </div>
-		            <input type="hidden" value="{{ $p['qty'] }}" name="qty">
-		            <input type="hidden" value="{{ $p['item']['price'] }}" name="price">
-		            <input type="hidden" value="{{ $totalPrice }}" name="total">
-		            <input type="hidden" value="{{ $p['item']['id'] }}" name="id">
+		            {{-- <input type="" value="{{ $p['qty'] }}" name="qty">
+		            <input type="" value="{{ $p['item']['price'] }}" name="price">
+		            <input type="" value="{{ $totalPrice }}" name="total">
+		            <input type="" value="{{ $p['item']['id'] }}" name="id"> --}}
 		            <!-- Modal Footer -->
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -124,7 +142,14 @@
 		        </div>
 		    </div>
 		</div>
-		                </form>
+		</form>
+	@else
+		<div class="row">
+			<div class="col-md-12">
+				<h2 style="text-align: center;">No Item in Cart!!</h2>
+			</div>
+		</div>
+	@endif
 	@else
 		<div class="row">
 			<div class="col-md-12">

@@ -1,3 +1,17 @@
 .thumbnail img {
 	max-height: 150px;
 }
+.center{
+width: 150px;
+  margin: 40px auto;
+  
+}
+.btnleft{
+	border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.btnright{
+	border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}

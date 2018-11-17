@@ -6,76 +6,55 @@
 <br><br>
 <h3 style="color: #FF5D00;"><strong>To Pay</strong></h3>
 <hr>
-	@if($dat->isEmpty())
+	@if($trans->isEmpty())
 		<div class="row">
 			<div class="col-md-12">
 				<h2 style="text-align: center;">No Item in To Pay!!</h2>
 			</div>
 		</div>
 	@else
-		@foreach($dat as $d)
-			<div class="container">
-			  <div class="row">
-			    <div class="col-sm">
-			    </div>
-			    <div class="col-sm col-md-8">
-			      	<div class="row">
-						<div class="col-md-12">
-							<ul class="list-group">
-								<li class="row list-group-item">
-									<div class="container">
-									  <div class="row">
-									    <div class="col-sm">
-									    	<img src="{{ $d->product->imagePath }}" alt="..." class="img-thumbnail" style="width: 160px">
-									    </div>
-									    <div class="col-sm" align="left" style="padding-top: 8px;">
-									    	<table>
-									    		<thead>
-									    			<tr>
-									    				<th style="width: 70px"></th>
-									    				<th style=""></th>
-									    			</tr>
-									    		</thead>
-									    		<tbody>
-									    			<tr>
-									    				<td>
-									    					Product
-									    				</td>
-									    				<td>: 
-									    					<strong>{{ $d->product->title }}</strong>
-									      					<span class="badge badge-primary">{{ $d->jumlah }}</span>
-									    				</td>
-									    			</tr>
-									    			<tr>
-									    				<td>Method</td>
-									    				<td>: {{ $d->method->pay }} ({{ $d->method->method }})</td>
-									    			</tr>
-									    			<tr>
-									    				<td>Curir</td>
-									    				<td>: {{ $d->curir->curir }}</td>
-									    			</tr>
-									    			<tr>
-									    				<td>Total</td>
-									    				<td>: <strong>Rp.{{ $d->total }}.000,00</strong></td>
-									    			</tr>
-									    		</tbody>
-									    	</table>
-									    </div>
-									    <div class="col-sm" align="right" style="padding-top: 20px">
-											<button class="btn btn-danger"><a href="" style="color: white; text-decoration: none;">Cencel</a></button>
-											<button class="btn btn-primary">Processd</button>
-									    </div>
-									  </div>
-								</li>
-							</ul>
-						</div>
-					</div>
-			    </div>
-			    <div class="col-sm">
-			    </div>
-			  </div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<table class="table table-bordered">
+						<thead>
+						  <tr>
+						    <th style="width: 50px">No.</th>
+						    <th style="width: 220px">Detail</th>
+						    <th style="width: 400px">Total Transaksi</th>
+						    <th>Action</th>
+						  </tr>
+						</thead>
+						@php
+							$no = 1
+						@endphp
+						@foreach($trans as $t)
+						@php
+							$nom = $no++
+						@endphp
+						  <tbody>
+						    <tr>
+						      <th>{{$nom}}</th>
+						      <td>
+						      	<h6>{{$t->mthod}}</h6>
+						      	<h6>{{$t->curir}}</h6>
+						      </td>
+						      <td>
+						      	<div class="row col-md-12">
+						      		<div class="col-md-8"><strong>Rp.{{$t->total_all}}.000,00</strong></div>
+						      		<div class="col-md-4"><a href="{{URL::to('detailPay/'.$t->token)}}" style="text-decoration: none;">View Detail</a></div>
+					      	</div>
+					      	</td>
+					      	<td style="padding-left: 20px">
+					      		<button class="btn btn-primary"><a href="" style="color: white; text-decoration: none;">Procesed</a></button>
+					      		<button class="btn btn-danger"><a href="" style="color: white; text-decoration: none;">Cencel</a></button>
+					  	    </td>
+					  	  </tr>
+					  	</tbody>
+					@endforeach
+					</table>
+				</div>
 			</div>
-		@endforeach
 	@endif
 @endsection
 @section('scripts')

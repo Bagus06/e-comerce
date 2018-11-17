@@ -51,48 +51,48 @@
 	  <div class="row">
 	    <div class="col-sm" style="text-align: center;">
 	    	<div class="card m-5" style="width: 15rem;">
-						  <img class="card-img-top" src="https://i2.wp.com/pengirimanmurah.com/wp-content/uploads/2017/09/Jasa-Pengiriman-Barang-Elektronik-Profesional-dan-Berpengalaman.png?fit=600%2C400&ssl=1" style="width:100; height:250px; " alt="Card image cap">
-						  <div class="card-body">
-						    <h5 class="card-title">Electronik</h5>
-						    <div class="row">
-							    <div class="col">
-								    <div align="center">
-								    	<a href="" class="btn btn-primary">More</a>
-								    </div>
-							    </div>
-						    </div>
-						  </div>
+				<img class="card-img-top" src="{{asset('img/elektronik.jpg')}}" style="width:100; height:250px; " alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Electronik</h5>
+						<div class="row">
+							<div class="col">
+								<div align="center">
+									<a href="" class="btn btn-primary">More</a>
+								</div>
+							</div>
 						</div>
+				</div>
+			</div>
 	    </div>
 	    <div class="col-sm" style="text-align: center;">
-						<div class="card m-5" style="width: 15rem;">
-						  <img class="card-img-top" src="https://cdn2.vectorstock.com/i/1000x1000/35/91/background-with-female-fashion-clothes-vector-8823591.jpg" style="width:100; height:180; " alt="Card image cap">
-						  <div class="card-body">
-						    <h5 class="card-title">Cloth</h5>
-						    <div class="row">
-							    <div class="col">
-								    <div align="center">
-								    	<a href="" class="btn btn-primary">More</a>
-								    </div>
-							    </div>
-						    </div>
-						  </div>
+		<div class="card m-5" style="width: 15rem;">
+			<img class="card-img-top" src="{{asset('img/clotes.jpg')}}" style="width:100; height:180; " alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">Cloth</h5>
+				<div class="row">
+					<div class="col">
+						<div align="center">
+							<a href="" class="btn btn-primary">More</a>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	    </div>
 	    <div class="col-sm" style="text-align: center;">
 	    	<div class="card m-5" style="width: 15rem;">
-							  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqub7xfchShtJhINHEL2Mjs3iM4eyfXZSOSZeRrAHvW2raDEeT" style="width:100; height:180; " alt="Card image cap">
-							  <div class="card-body">
-							    <h5 class="card-title">Baby Acessories</h5>
-							    <div class="row">
-								    <div class="col">
-									    <div align="center">
-									    	<a href="" class="btn btn-primary">More</a>
-									    </div>
-								    </div>
-							    </div>
-							  </div>
-							</div>
+			 	<img class="card-img-top" src="{{asset('img/bayi.jpg')}}" style="width:100; height:180; " alt="Card image cap">
+				<div class="card-body">
+				    <h5 class="card-title">Baby Acessories</h5>
+				    <div class="row">
+					    <div class="col">
+						    <div align="center">
+						    	<a href="" class="btn btn-primary">More</a>
+						    </div>
+					    </div>
+				    </div>
+				</div>
+			</div>
 	    </div>
 	  </div>
 	</div>
@@ -149,9 +149,9 @@
 						    <div class="row">
 							    <div class="col">
 							      	<div align="left">
-							    		<p class="card-text"><strong> ${{ $p->price }} </strong></p>
+							    		<p class="card-text"><strong>Rp.{{ $p->price }}.000,00 </strong></p>
 							    	</div>
-							    </div>
+							    </div><br>
 							    <div class="col">
 								    <div align="right">
 								    	<a href="{{ route ('product.getAddToCart', ['id' => $p->id])}}" class="btn btn-primary">Add Cart</a>
