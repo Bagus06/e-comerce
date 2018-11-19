@@ -37,18 +37,27 @@
 										<span class="label label-success">Rp.{{ $p['price'] }}.000,00</span>
 									</td>
 									<td>
+										@php
+											$val = "";
+											$cek = $p['qty'];
+											if ($cek <= 1) {
+												$val = "disabled";
+											}else{
+												$val = "enabled";
+											}
+										@endphp
 										<div class="center">
 									      </p><div class="input-group">
 									          <span class="input-group-btn">
-									              <a type="button" class="btn btn-danger btnright" href="{{URL::to('/removeItem/'.$p['item']['id'])}}">
+									              <button type="button" class="btn btn-danger btnright" onclick="location.href='{{route('reduceOne', ['id' => $p['item']['id']])}}'" {{$val}}>
 									                <i class="fas fa-minus"></i>
-									              </a>
+									              </button>
 									          </span>
 									          <input type="text" name="qty{{$p['item']['id']}}" class="form-control input-number col-md-4" style="text-align: center;" value="{{ $p['qty'] }}" min="1" max="100" id="qty{{$p['item']['id']}}">
 									          <span class="input-group-btn">
-									              <a type="button" class="btn btn-success btnleft" href="{{URL::to('/addItem/'.$p['item']['id'])}}">
+									              <button type="button" class="btn btn-success btnleft" onclick="location.href='{{route('addOne', ['id' => $p['item']['id']])}}'">
 									                  <i class="fas fa-plus"></i>
-									              </a>
+									              </button>
 									          </span>
 									      </div>
 									</td>
@@ -67,7 +76,7 @@
 								<div class="text-right">
 									<strong>Total : Rp.{{ $totalPrice }}.000,00</strong>
 									<hr>
-									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
+									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm" disabled>
 									    Checkout
 									</button>
 								</div>
@@ -125,11 +134,6 @@
 		                      	@endforeach
 		                      </select>
 		                  </div>
-		            </div>
-		            {{-- <input type="" value="{{ $p['qty'] }}" name="qty">
-		            <input type="" value="{{ $p['item']['price'] }}" name="price">
-		            <input type="" value="{{ $totalPrice }}" name="total">
-		            <input type="" value="{{ $p['item']['id'] }}" name="id"> --}}
 		            <!-- Modal Footer -->
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-default" data-dismiss="modal">

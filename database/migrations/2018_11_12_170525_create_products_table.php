@@ -19,11 +19,15 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('qty');
             $table->integer('price');
             $table->timestamps();
             
             $table->foreign('type_id')->references('id')->on('types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

@@ -48,7 +48,7 @@
                       <a class="dropdown-item" href="{{ route('logout') }}">
                           <i class="fas fa-cogs"></i> Profil
                       </a>
-                      <a class="dropdown-item" href="{{ route('logout') }}">
+                      <a class="dropdown-item" href="{{route('yourProduct') }}">
                           <i class="fas fa-shopping-bag"></i> Yor Product
                       </a>
                       <a class="dropdown-item" href="{{ route('toPay') }}">

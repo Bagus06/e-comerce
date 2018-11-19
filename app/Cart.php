@@ -53,4 +53,22 @@ class Cart
             $this->totalPrice += $item['price'];
         }
     }
+
+    public function kurang($id)
+    {
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+        // dd($this->items[$id]['price']);
+        $this->totalQty--;
+        $this->totalPrice -= $this->items[$id]['item']['price'];
+    }
+
+    public function tambah($id)
+    {
+        $this->items[$id]['qty']++;
+        $this->items[$id]['price'] += $this->items[$id]['item']['price'];
+        // dd($this->items[$id]['price']);
+        $this->totalQty++;
+        $this->totalPrice += $this->items[$id]['item']['price'];
+    }
 }

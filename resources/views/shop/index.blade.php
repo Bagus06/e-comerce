@@ -3,13 +3,12 @@
 	e-comerce
 @endsection
 @section('content')
-@include('notify::notify')
 <div style="padding-right: 40px;padding-left: 40px; padding-top: 20px">
 		  <div class="col-12 col-sm-6 col-md-12">
 		  		<div class="row">
 		  			@foreach($products as $p)
 						<div class="card m-1" style="width: 15rem;">
-						  <img class="card-img-top" src="{{ $p->imagePath }}/100px180/" alt="Card image cap">
+						  <img class="card-img-top" src="{{ asset ('img/'.$p->imagePath)}}" alt="{{$p->imagePath}}" style="height: 230; width: 200">
 						  <div class="card-body">
 						    <h5 class="card-title"><a href="" style="text-decoration: none; color: black;">{{ $p->title }}</a></h5>
 						    <div class="row">

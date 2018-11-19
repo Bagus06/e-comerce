@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/getCheck/{token}', 'ProductController@getCheck')->name('getCheck');
 	Route::post('/checkout/{token}', 'ProductController@postCheckout')->name('checkout');
 	Route::post('/check', 'ProductController@postCheck')->name('postCheck');
+	Route::get('/yourProduct', 'ProductController@yourProduct')->name('yourProduct');
+	Route::post('/postProduct', 'ProductController@postProduct')->name('postProduct');
+	Route::get('/cencelCheck/{id}', 'ProductController@cencelCheck')->name('cencelCheck');
 	Route::get('/toPay', 'ProductController@toPay')->name('toPay');
 });
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.getAddToCart');
@@ -27,5 +30,18 @@ Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppin
 Route::get('/cartCheck/{id}', 'ProductController@cartCheck')->name('cartCheck');
 Route::get('/delete/{id}', 'ProductController@deleteCart')->name('delete');
 
-Route::get('/removeItem/{id}', 'ProductController@removeItem')->name('removeItem');
+Route::get('/reduceOne/{id}', [
+	'uses' => 'ProductController@kurang',
+	'as' => 'reduceOne'
+]);
+Route::get('/addOne/{id}', [
+	'uses' => 'ProductController@tambah',
+	'as' => 'addOne'
+]);
+
 Route::get('/addItem/{id}', 'ProductController@addItem')->name('addItem');
+
+
+// Route::get('/coba', function(){
+// 	return view('shop.yourProduct');
+// });

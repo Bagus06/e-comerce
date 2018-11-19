@@ -36,8 +36,9 @@
 						    <tr>
 						      <th>{{$nom}}</th>
 						      <td>
-						      	<h6>{{$t->mthod}}</h6>
 						      	<h6>{{$t->curir}}</h6>
+						      	<h6>{{$t->mthod}}</h6>
+						      	<h6>{{$t->created_at}}</h6>
 						      </td>
 						      <td>
 						      	<div class="row col-md-12">

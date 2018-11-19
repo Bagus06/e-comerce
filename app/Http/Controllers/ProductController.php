@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Session;
 use App\Cart;
 use App\Method;
 use App\Curir;
+use App\Type;
 use App\Product;
 use App\Checkout;
 use App\Transaksi;
@@ -14,10 +16,16 @@ use Auth;
 
 class ProductController extends Controller
 {
+    public function yourProduct(Request $request)
+    {
+        $type = Type::all();
+        $data = Product::where('user_id', Auth::user()->id)->get();
+        return view('shop.yourProduct', compact('type','data'));
+    }
+
     public function getIndex(Request $request)
     {
     	$products = Product::all();
-        notify()->error('Title', 'Description');
     	return view('shop.index', ['products' => $products]);
     }
 
@@ -149,7 +157,7 @@ class ProductController extends Controller
                 $data->save();
             }
         }
-
+        
         // $delete = Cart::find($id);
         // $delete->delete();    
         return redirect('/getCheck/'.$token);
@@ -171,6 +179,59 @@ class ProductController extends Controller
 
         Session::forget('cart');
         return redirect()->route('toPay');
+    }
+
+    public function postProduct(Request $request)
+    {
+        $image = $request->img;
+        $filename = time() . '.' .  $image->getClientOriginalName();
+        $path = public_path('img/' . $filename);
+        Image::make($image->getRealPath())->resize(200, 230)->save($path);
+
+        $data = new Product();
+        $data->imagePath = $filename;
+        $data->title = $request->title;
+        $data->description = $request->des;
+        $data->type_id = $request->type;
+        $data->user_id = Auth::user()->id;
+        $data->qty = $request->qty;
+        $data->price = $request->price;
+        $data->save();
+        // dd($data);
+
+        return redirect()->route('yourProduct');
+    }
+
+    public function kurang($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->kurang($id);
+        
+        Session::put('cart', $cart);
+        $oldCart = Session::get('cart');
+        // dd($oldCart);
+        return redirect()->route('product.shoppingCart');
+    }
+
+    public function tambah($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->tambah($id);
+        
+        Session::put('cart', $cart);
+        $oldCart = Session::get('cart');
+        // dd($oldCart);
+        return redirect()->route('product.shoppingCart');
+    }
+
+    public function cencelCheck($token)
+    {
+        $delete = Checkout::where('token', $token)->get()->each->delete();
+        // dd($delete);
+        // $delete->delete(['items']);
+        return redirect()->route('product.shoppingCart');
     }
 
 }
