@@ -71,7 +71,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td colspan="4">
+									<td colspan="4" style="width: 500px">
 										<div style="padding-top: 10px">
 											<strong>Description :</strong><br>
 											<span class="label label-success" style="padding-left: 16px"> {{$d->description}}</span>
