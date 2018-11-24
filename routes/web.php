@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/yourProduct', 'ProductController@yourProduct')->name('yourProduct');
 	Route::post('/postProduct', 'ProductController@postProduct')->name('postProduct');
 	Route::get('/cencelCheck/{id}', 'ProductController@cencelCheck')->name('cencelCheck');
+	Route::get('/cencelBuy/{id}', 'ProductController@cencelBuy')->name('cencelBuy');
 	Route::get('/toPay', 'ProductController@toPay')->name('toPay');
 });
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.getAddToCart');

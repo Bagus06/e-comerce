@@ -39,6 +39,7 @@
 						      	<h6>{{$t->curir}}</h6>
 						      	<h6>{{$t->mthod}}</h6>
 						      	<h6>{{$t->created_at}}</h6>
+						      	<h6>{{$t->address}}</h6>
 						      </td>
 						      <td>
 						      	<div class="row col-md-12">
@@ -48,7 +49,7 @@
 					      	</td>
 					      	<td style="padding-left: 20px">
 					      		<button class="btn btn-primary"><a href="" style="color: white; text-decoration: none;">Procesed</a></button>
-					      		<button class="btn btn-danger"><a href="" style="color: white; text-decoration: none;">Cencel</a></button>
+					      		<button class="btn btn-danger"><a href="{{URL::to('cencelBuy/'.$t->id)}}" style="color: white; text-decoration: none;">Cencel</a></button>
 					  	    </td>
 					  	  </tr>
 					  	</tbody>

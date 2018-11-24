@@ -115,6 +115,7 @@
 															<input type="hidden" value="{{ $d->token }}" name="token">
 															<input type="hidden" value="{{ $d->method->pay }}  ({{ $d->method->method }})" name="method">
 															<input type="hidden" value="{{ $d->curir->curir }}" name="curir">
+															<input type="hidden" value="{{ $d->addres }}" name="addres">
 
 															<button class="btn btn-danger"> <a href="{{URL::to('/cencelCheck/'.$d->token)}}" style="color: white; text-decoration: none; ">Cencel </a> </button>
 															<button type="submit" class="btn btn-success">Go</button>

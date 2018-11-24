@@ -121,6 +121,15 @@ class ProductController extends Controller
         return redirect()->route('removeItem');
     }
 
+    public function cencelBuy(Request $request, $id)
+    {
+        $checkout = Transaksi::where('id', $id)->first()->token;
+        $check = Checkout::where('token', $checkout)->get()->each->delete();
+        $transaksi = Transaksi::where('id', $id)->get()->each->delete();
+
+        return redirect()->route('toPay');
+    }
+
     public function addItem(Request $request, $id)
     {
         $oldCart = Session::get('cart');
@@ -174,6 +183,7 @@ class ProductController extends Controller
         $data->token = $request->token;
         $data->mthod = $request->method;
         $data->curir = $request->curir;
+        $data->address = $request->addres;
         $data->save();
         // dd($data);
 

@@ -19,7 +19,7 @@
 									<div class="container">
 									  <div class="row">
 									    <div class="col-md-3">
-									    	<img src="{{ $d->product->imagePath }}" alt="..." class="img-thumbnail" style="width: 160px">
+									    	<img src="{{asset ('img/'.$d->product->imagePath) }}" alt="..." class="img-thumbnail" style="width: 160px">
 									    </div>
 									    <div class="col-m-7" align="left" style="padding-top: 8px;">
 									    	<table>

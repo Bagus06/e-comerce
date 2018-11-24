@@ -20,6 +20,7 @@ class CreateTransaksisTable extends Migration
             $table->string('token');
             $table->string('mthod');
             $table->string('curir');
+            $table->string('address');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

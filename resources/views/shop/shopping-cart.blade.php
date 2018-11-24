@@ -31,7 +31,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><img src="{{$p['item']['imagePath']}}" alt="..." class="img-thumbnail" style="width: 160px"></td>
+									<td><img src="{{asset('img/'.$p['item']['imagePath'])}}" alt="..." class="img-thumbnail" style="width: 160px"></td>
 									<td>
 										<strong>{{ $p['item']['title'] }}</strong><br>
 										<span class="label label-success">Rp.{{ $p['price'] }}.000,00</span>
@@ -76,7 +76,7 @@
 								<div class="text-right">
 									<strong>Total : Rp.{{ $totalPrice }}.000,00</strong>
 									<hr>
-									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm" disabled>
+									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
 									    Checkout
 									</button>
 								</div>
