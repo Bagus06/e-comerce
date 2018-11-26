@@ -4,33 +4,39 @@
 @endsection
 @section('content')
 	@if(count($data)>0)
-		<div class="col-md-12" style="padding-left: 50px; padding-top: 20px">
+		<div class="col-md-12" style="padding-top: 20px">
 				<div class="row">
 					<div class="col-md-3"></div>
 					<div style="" class="row">
 						<!-- Search form -->
-						<div style="padding-right: 240px">
-						<form class="form-inline ">
-						  <input class="form-control form-control-sm mr-2 w-90" type="text" placeholder="Search" aria-label="Search">
-						  <i class="fa fa-search" aria-hidden="true"></i>
-						</form>
+						<div style="padding-right: 185px">
+						<form class="form-inline my-2 my-lg-0">
+					      <div class="input-group">
+					        <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 230px">
+					        <span class="input-group-append">
+					            <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
+					        </span>
+					      </div>
+					    </form>
 						</div>
-						<div class="btn-group">
-						  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Option
-						  </button>
-						<div style="padding-left: 8px"></div>
-						  <div class="dropdown-menu">
-						    <a class="dropdown-item" href="#">Short Up</a>
-						    <a class="dropdown-item" href="#">Short Down</a>
-						  </div>
+						<div>
+							<div class="btn-group">
+							  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Option
+							  </button>
+							<div style="padding-left: 5px"></div>
+							  <div class="dropdown-menu">
+							    <a class="dropdown-item" href="#">Short Up</a>
+							    <a class="dropdown-item" href="#">Short Down</a>
+							  </div>
+							</div>
+							<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm">Add Product</button>
 						</div>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm">Add Product</button>
 					</div>
 				</div>
 			</div>
 	@endif
-	<div style="padding-right: 40px;padding-left: 40px; padding-top: 20px">
+	<div style="padding-right: 40px;padding-top: 20px">
 		  	<div class="row" style="padding-top: 10px">
 		  		@if(count($data)>0)
 		  		@foreach($data as $d)
@@ -50,7 +56,7 @@
 								<tr>
 									<td><img src="{{asset('img/'.$d->imagePath)}}" alt="..." class="img-thumbnail" style="width: 160px"></td>
 									<td>
-										<div>
+										<div style="width: 150px">
 											<strong>Product Name :</strong><br>
 											<span class="label label-success" style="padding-left: 8px"> {{$d->title}}</span>
 										</div>

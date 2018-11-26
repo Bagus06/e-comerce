@@ -42,7 +42,6 @@ Route::get('/addOne/{id}', [
 
 Route::get('/addItem/{id}', 'ProductController@addItem')->name('addItem');
 
-
-// Route::get('/coba', function(){
-// 	return view('shop.yourProduct');
-// });
+Route::get('/coba', function(){
+	return view('shop.profil');
+});

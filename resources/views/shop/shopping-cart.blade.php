@@ -3,8 +3,9 @@
 	e-comerce
 @endsection
 @section('content')
-<br><br>
-<h3 style="color: #FF5D00;"><strong>Cart</strong></h3>
+<br>
+<br>
+ 	<h3 style="color: #FF5D00;"><strong>Cart</strong></h3>
 <hr>
 	@if(session::has('cart'))
 	@if(count($product)>0)

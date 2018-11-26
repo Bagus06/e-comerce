@@ -1,23 +1,32 @@
-
-<div class="container col-md-12 fixed-top" style="background-color: #E65400;">
+<div class="container col-md-12 fixed-top" style="background-color: #E65400; height: 30px">
   <div class="row">
     <div class="col-sm">
     </div>
-    <div class="col-sm" style="text-align: center; padding-top: 8px">
+    <div class="col-sm" style="text-align: center; padding-top: 4px">
       <a href="{{URL::to('/')}}" class="p-2" style="color:white;">Home</a>
       <a href="" class="p-2" style="color:white;">Electronik</a>
       <a href="" class="p-2" style="color:white;">Cloth</a>
       <a href="" class="p-2" style="color:white;">Baby Accesories</a>
       <a href="{{URL::to('/shop')}}" class="p-2" style="color:white;">All</a>
     </div>
-    <div class="col-sm" style="text-align: right;">
+    <div class="col-sm" style="text-align: right; padding-bottom: 6px">
       <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
     </div>
   </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF5D00;padding-top: 50px">
-  <a class="navbar-brand" href="#" style="color:white;">My-BAG</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF5D00;padding-top: 35px">
+  <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/logo1.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
+    <div style="padding-left: 180px">
+    <form class="form-inline my-2 my-lg-0">
+      <div class="input-group">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 530px">
+        <span class="input-group-append">
+            <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+    </div>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -45,7 +54,7 @@
               </a>
 
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('logout') }}">
+                      <a class="dropdown-item" href="{{ URL::to('/coba') }}">
                           <i class="fas fa-cogs"></i> Profil
                       </a>
                       <a class="dropdown-item" href="{{route('yourProduct') }}">
