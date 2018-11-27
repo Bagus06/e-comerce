@@ -20,9 +20,14 @@ class ProfilController extends Controller
     public function postProfil(Request $request)
     {	
     	$image = $request->img;
-        $filename = time() . '.' .  $image->getClientOriginalName();
-        $path = public_path('profil/' . $filename);
-        Image::make($image->getRealPath())->resize(190, 150)->save($path);
+    	if ($image == null) {
+    		$image = $request->is;
+    		$filename = $image;
+    	}else{
+	        $filename = time() . '.' .  $image->getClientOriginalName();
+	        $path = public_path('profil/' . $filename);
+	        Image::make($image->getRealPath())->resize(190, 150)->save($path);
+    	}
 
         $data = Profil::where('user_id', Auth::user()->id)->first();
         $data->phone = $request->phone;
