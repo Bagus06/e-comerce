@@ -45,7 +45,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `imagePath`, `title`, `description`, `type_id`, `user_id`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'products' ('id', 'imagePath', 'title', 'description', 'type_id', 'user_id', 'qty', 'price', 'created_at', 'updated_at') VALUES
 (1, '1542617586.images (12).jpg', 'dress', 'dress terbaru warna sesuai gambar bahan terbaik', 2, 3, 2, 120, '2018-11-19 01:53:06', '2018-11-19 01:53:06'),
 (2, '1542617981.0_280df766-7b35-4a97-99f0-4f7064f31cfd_1280_1280.jpg', 'baju gamis', 'baju gamis keluaran terbaru,warna sesuai gambar,bahan terbaik, untuk ukuran silahkan beri note saat checkout', 2, 3, 1, 179, '2018-11-19 01:59:41', '2018-11-19 01:59:41'),
 (3, '1542618737.6-Colors-Children-Magic-Drawing-Board-Paperless.jpg_350x350.jpg', 'cpu', 'cpu produk terbaik,harga terjangkau,warna sesuai gambar', 1, 3, 6, 7000, '2018-11-19 02:12:17', '2018-11-19 02:12:17'),
@@ -101,7 +101,7 @@ INSERT INTO `products` (`id`, `imagePath`, `title`, `description`, `type_id`, `u
 --
 
 --
--- Indexes for table `products`
+-- Indexes for table 'products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),

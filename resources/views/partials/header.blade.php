@@ -16,7 +16,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF5D00;padding-top: 35px">
   <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/logo1.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
-    <div style="padding-left: 180px">
+    <div style="padding-left: 242px">
     <form class="form-inline my-2 my-lg-0">
       <div class="input-group">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 530px">
@@ -37,45 +37,48 @@
       <div class="navbar-nav nav-item active">
         
       </div>
-      <div class="navbar-nav nav-item dropdown" style="padding-right: 25px">
-          @guest
-              <li class="nav-item">
-                  <a class="nav-link" style="color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
-              </li>
-              <li class="nav-item">
-                  @if (Route::has('register'))
-                      <a class="nav-link" style="color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
-                  @endif
-              </li>
-          @else
-            <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <i class="far fa-user-circle" style="color: white;"></i> {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ URL::to('/coba') }}">
-                          <i class="fas fa-cogs"></i> Profil
-                      </a>
-                      <a class="dropdown-item" href="{{route('yourProduct') }}">
-                          <i class="fas fa-shopping-bag"></i> Yor Product
-                      </a>
-                      <a class="dropdown-item" href="{{ route('toPay') }}">
-                           <i class="fas fa-money-bill"></i> Transaction
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="{{ route('logout') }}"
-                         onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                          <i class="fas fa-sign-out-alt fa-2px"></i> {{ __('Logout') }}
-                      </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
+      <div style="padding-right: 40px">
+        <div class="navbar-nav nav-item dropdown" style="padding-right: 25px">
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    @if (Route::has('register'))
+                        <a class="nav-link" style="color:white;" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            @else
+              <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <i class="far fa-user-circle" style="color: white;"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                  <div>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('memberProfil') }}">
+                            <i class="fas fa-cogs"></i> Profil
+                        </a>
+                        <a class="dropdown-item" href="{{route('yourProduct') }}">
+                            <i class="fas fa-shopping-bag"></i> Yor Product
+                        </a>
+                        <a class="dropdown-item" href="{{ route('toPay') }}">
+                             <i class="fas fa-money-bill"></i> Transaction
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt fa-2px"></i> {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                   </div>
-              </li>
-          @endguest
-        </div>
+                </li>
+            @endguest
+          </div>
+      </div>
       </div>
   </div>
 </nav>

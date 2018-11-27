@@ -142,7 +142,7 @@
 		  <div class="col-12 col-sm-6 col-md-12">
 		  		<div class="row">
 		  			@foreach($products as $p)
-						<div class="card m-1" style="width: 210px;">
+						<div class="card m-1" style="width: 198px;">
 						  <img class="card-img-top" src="{{asset ('img/'.$p->imagePath) }}" alt="Card image cap" style="height: 230; width: 200">
 						  <div class="card-body">
 						    <h5 class="card-title">{{ $p->title }}</h5>

@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/cencelCheck/{id}', 'ProductController@cencelCheck')->name('cencelCheck');
 	Route::get('/cencelBuy/{id}', 'ProductController@cencelBuy')->name('cencelBuy');
 	Route::get('/toPay', 'ProductController@toPay')->name('toPay');
+	Route::get('/memberProfil', 'ProfilController@memberProfil')->name('memberProfil');
+	Route::post('/memberProfilPost', 'ProfilController@postProfil')->name('postProfil');
 });
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.getAddToCart');
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
