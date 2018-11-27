@@ -13,6 +13,7 @@
 
 Route::get('/shop', 'ProductController@getIndex')->name('product.index');
 Route::get('/', 'ProductController@getHome')->name('home');
+Route::get('/home', 'ProductController@getHome')->name('home');
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
