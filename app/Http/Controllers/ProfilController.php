@@ -35,4 +35,13 @@ class ProfilController extends Controller
 
         return redirect()->route('memberProfil');
     }
+    public function makeProfil(Request $request)
+    {	
+        $data = new Profil();
+        $data->user_id = Auth::user()->id;
+        // dd($data);
+        $data->save();
+
+        return redirect()->route('memberProfil');
+    }
 }

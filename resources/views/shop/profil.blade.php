@@ -15,10 +15,27 @@
 	@yield('styles')
 </head>
 <body>
+    @if($data->isEmpty())
+    <div style="padding-right: 40px;padding-top: 20px">
+        <div class="row" style="padding-top: 200px">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div style="padding-left: 150px; padding-right: 150px">
+                    <div class="card w-100" style="text-align: center;">
+                      <div class="card-body">
+                        <h5 class="card-title"><strong>GO Sunting Your Profil</strong></h5>
+                        <a href="{{route('makeProfil')}}" class="btn btn-primary">GO</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @else
     <div style="padding-left: 50px;padding-top: 30px;">
         <a href="{{ redirect()->back()->getTargetUrl() }}" style="text-decoration: none;color:white;"><i class="fas fa-arrow-left fa-2x"></i></a>
     </div>
-<div class="container emp-profile">
+        <div class="container emp-profile">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -235,6 +252,7 @@
             </div>
         </div>
         </form>
+    @endif
 	{{-- script --}}
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
