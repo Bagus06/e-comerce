@@ -1,4 +1,4 @@
-<div class="container col-md-12 fixed-top" style="background-color: #E65400; height: 30px">
+<div class="container col-md-12 fixed-top" style="background-color: #510079; height: 30px">
   <div class="row">
     <div class="col-sm">
     </div>
@@ -10,22 +10,30 @@
       <a href="{{URL::to('/shop')}}" class="p-2" style="color:white;">All</a>
     </div>
     <div class="col-sm" style="text-align: right; padding-bottom: 6px">
-      <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
+      <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger" style="color: red"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
     </div>
   </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF5D00;padding-top: 35px">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #560081;padding-top: 35px">
   <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/logo1.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
-    <div style="padding-left: 242px">
-    <form class="form-inline my-2 my-lg-0">
-      <div class="input-group">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 530px">
-        <span class="input-group-append">
-            <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
-        </span>
+  <div class="container" style="width: 860px; text-align: center;">
+    <div class="row col-md-12">
+      <div class="col-sm col-md-2">
       </div>
-    </form>
+      <div class="col-sm col-md-8">
+        <div align="right" style="text-align: center;">
+            <div class="input-group">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 462px">
+              <span class="input-group-append">
+                  <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
+              </span>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm col-md-2">
+      </div>
     </div>
+  </div>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,8 +45,8 @@
       <div class="navbar-nav nav-item active">
         
       </div>
-      <div style="padding-right: 40px">
-        <div class="navbar-nav nav-item dropdown" style="padding-right: 25px">
+      <div style="">
+        <div class="navbar-nav nav-item dropdown" style="">
             @guest
                 <li class="nav-item">
                     <a class="nav-link" style="color:white;" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -51,9 +59,9 @@
             @else
               <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <i class="far fa-user-circle" style="color: white;"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                  <i class="far fa-user-circle" style="color: white;"></i> <strong style="color: white;">{{ Auth::user()->name }}</strong> <span class="caret"></span>
                 </a>
-                  <div>
+                  <div class="pull-left">
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('memberProfil') }}">
                             <i class="fas fa-cogs"></i> Profil

@@ -44,8 +44,8 @@
 	</div>
 	<br>
 	<div>
-		<h3 style="color: #FF5D00;"><strong>Kategori</strong></h3>
-		<hr color="#FF5D00">
+		<h3 style="color: #510079;"><strong>Kategori</strong></h3>
+		<hr color="#510079">
 	</div>
 	<div class="container col-md-12" style="padding-top: 5px">
 	  <div class="row">
@@ -98,8 +98,8 @@
 	</div>
 	<br>
 	<div>
-		<h3 style="color: #FF5D00;"><strong>Brand</strong></h3>
-		<hr color="#FF5D00">
+		<h3 style="color: #510079;"><strong>Brand</strong></h3>
+		<hr color="#510079">
 	</div>
 	<div class="container col-md-12" style="padding-top: 5px">
 	  <div class="row">
@@ -137,22 +137,24 @@
 	</div>
 	<div>
 		<br>
-		<h3 style="color: #FF5D00;"><strong>Recomend</strong></h3>
-		<hr color="#FF5D00">
+		<h3 style="color: #510079;"><strong>Recomend</strong></h3>
+		<hr color="#510079">
 		  <div class="col-12 col-sm-6 col-md-12">
 		  		<div class="row">
 		  			@foreach($products as $p)
 						<div class="card m-1" style="width: 198px;">
 						  <img class="card-img-top" src="{{asset ('img/'.$p->imagePath) }}" alt="Card image cap" style="height: 230; width: 200">
 						  <div class="card-body">
-						    <h5 class="card-title">{{ $p->title }}</h5>
+						  	<div align="left" style="height: 40px">
+						    	<p class="card-title">{{ $p->title }}</p>
+						    </div>
 						    <div class="row">
-							    <div class="col">
+							    <div align="left" style="padding-bottom: 6px">
 							      	<div align="left">
 							    		<p class="card-text"><strong>Rp.{{ $p->price }}.000,00 </strong></p>
 							    	</div>
 							    </div><br>
-							    <div class="col">
+							    <div align="left" style="padding-bottom: 6px">
 								    <div align="right">
 								    	<a href="{{ route ('product.getAddToCart', ['id' => $p->id])}}" class="btn btn-primary">Add Cart</a>
 								    </div>
@@ -166,7 +168,7 @@
 	</div>
   <br>
   <div>
-	<hr color="#FF5D00">
+	<hr color="#510079">
   	<div class="container">
 	  <div class="row">
 	    <div class="col-sm" align="center">

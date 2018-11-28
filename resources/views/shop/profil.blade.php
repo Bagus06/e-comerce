@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="padding-top: 20px">
                         <div class="profile-work" style="padding-left: 60px">
                             <div class="row">
                                 @php
@@ -89,7 +89,13 @@
                                 @if ($fa == null)
                                     
                                 @else
-                                    <i class="fab fa-facebook-square fa-lg"><p><u><strong>{{$fa}}</strong></u></p></i>
+                                    <div align="left" style="padding-right: 4px">
+                                        <i class="fab fa-facebook-square fa-lg"></i>
+                                    </div>
+                                    <div  style="letter-spacing: 3px;"></div>
+                                    <div align="right">
+                                        <p><u><strong>{{$fa}}</strong></u></p>
+                                    </div>
                                 @endif
                             </div>
                             <div class="row" style="padding-top: 5px">
@@ -99,7 +105,13 @@
                                 @if ($in == null)
                                     
                                 @else
-                                    <i class="fab fa-instagram fa-lg"><p><u><strong>{{$in}}</strong></u></p></i>
+                                    <div align="left" style="padding-right: 4px">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                    </div>
+                                    <div  style="letter-spacing: 3px;"></div>
+                                    <div align="right">
+                                        <p><u><strong>{{$in}}</strong></u></p>
+                                    </div>
                                 @endif
                             </div>
                             <div class="row" style="padding-top: 5px">
@@ -109,7 +121,13 @@
                                 @if ($we == null)
                                     
                                 @else
-                                    <i class="fab fa-chrome fa-lg"><p><u><strong>{{$we}}</strong></u></p></i>
+                                    <div align="left" style="padding-right: 4px">
+                                        <i class="fab fa-chrome fa-lg"></i>
+                                    </div>
+                                    <div  style="letter-spacing: 3px;"></div>
+                                    <div align="right">
+                                        <p><u><strong>{{$we}}</strong></u></p>
+                                    </div>
                                 @endif
                             </div>
                         </div>
