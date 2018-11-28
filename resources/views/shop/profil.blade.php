@@ -90,7 +90,7 @@
                                     
                                 @else
                                     <div align="left" style="padding-right: 4px">
-                                        <i class="fab fa-facebook-square fa-lg"></i>
+                                        <i class="fab fa-facebook-square fa-lg" style="color: "></i>
                                     </div>
                                     <div  style="letter-spacing: 3px;"></div>
                                     <div align="right">

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <br><br>
-<h3 style="color: #FF5D00;"><strong>To Pay</strong></h3>
+<h3 style="color: #560081;"><strong>To Pay</strong></h3>
 <hr>
 	@if($trans->isEmpty())
 		<div class="row">

@@ -145,21 +145,28 @@
 						<div class="card m-1" style="width: 198px;">
 						  <img class="card-img-top" src="{{asset ('img/'.$p->imagePath) }}" alt="Card image cap" style="height: 230; width: 200">
 						  <div class="card-body">
-						  	<div align="left" style="height: 40px">
-						    	<p class="card-title">{{ $p->title }}</p>
-						    </div>
+						  	<div class="row">
+							  	<div align="left" style="height: 50px">
+							    	<p class="card-title" style="text-transform: capitalize;">{{ $p->title }}</p>
+							    </div>
+						  	</div>
 						    <div class="row">
 							    <div align="left" style="padding-bottom: 6px">
 							      	<div align="left">
-							    		<p class="card-text"><strong>Rp.{{ $p->price }}.000,00 </strong></p>
+							    		<p class="card-text"><strong style="color:#560081; ">Rp.{{ $p->price }}.000,00 </strong></p>
 							    	</div>
-							    </div><br>
-							    <div align="left" style="padding-bottom: 6px">
-								    <div align="right">
-								    	<a href="{{ route ('product.getAddToCart', ['id' => $p->id])}}" class="btn btn-primary">Add Cart</a>
-								    </div>
 							    </div>
 						    </div>
+						  	<div class="row">
+						  		<div style="padding-right:px">
+						  			<p>Terjual : {0}</p>
+						  		</div>
+						  	</div>
+						  	<div class="row">
+						  		<div style="padding-left: 150px">						  			
+							    	<a href="{{ route ('product.getAddToCart', ['id' => $p->id])}}" style="color: #1F74E8;"><i class="fas fa-cart-plus fa-lg"></i></a>
+						  		</div>
+						  	</div>
 						  </div>
 						</div>
 					@endforeach

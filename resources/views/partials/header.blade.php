@@ -10,29 +10,29 @@
       <a href="{{URL::to('/shop')}}" class="p-2" style="color:white;">All</a>
     </div>
     <div class="col-sm" style="text-align: right; padding-bottom: 6px">
-      <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger" style="color: red"> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
+      <a class="nav-link" href=" {{ route ('product.shoppingCart')}} "><i class="fas fa-shopping-cart fa-2px" style="color: white;"><span class="badge badge-pill badge-danger" style=""> {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }} </span> <span class="sr-only">(current)</span></i></a>
     </div>
   </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #560081;padding-top: 35px">
   <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/logo1.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
-  <div class="container" style="width: 860px; text-align: center;">
-    <div class="row col-md-12">
-      <div class="col-sm col-md-2">
-      </div>
-      <div class="col-sm col-md-8">
-        <div align="right" style="text-align: center;">
-            <div class="input-group">
-              <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 462px">
+  <div class="container">
+    {{-- <div class="row col-md-12"> --}}
+      {{-- <div class="col-sm col-md-2"> --}}
+      {{-- </div> --}}
+      {{-- <div class="col-sm col-md-8 text-center"> --}}
+        <div style="display: contents;" >
+            <div class="input-group" style=" margin-left: 25%; margin-right: 25%;">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
               <span class="input-group-append">
                   <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
               </span>
             </div>
         </div>
-      </div>
-      <div class="col-sm col-md-2">
-      </div>
-    </div>
+      {{-- </div> --}}
+      {{-- <div class="col-sm col-md-2"> --}}
+      {{-- </div> --}}
+    {{-- </div> --}}
   </div>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -57,11 +57,11 @@
                     @endif
                 </li>
             @else
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" style="width: max-content;">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   <i class="far fa-user-circle" style="color: white;"></i> <strong style="color: white;">{{ Auth::user()->name }}</strong> <span class="caret"></span>
                 </a>
-                  <div class="pull-left">
+                  <div class="pull-left" style="position: relative;right: 10px;">
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('memberProfil') }}">
                             <i class="fas fa-cogs"></i> Profil
