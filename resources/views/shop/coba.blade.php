@@ -14,7 +14,7 @@
   </style>
  </head>
  <body>
-  <br />
+  <br/>
   <div class="container box">
    <h3 align="center">Ajax Dynamic Dependent Dropdown in Laravel</h3><br />
    <div class="form-group">
