@@ -147,7 +147,7 @@
 						  <div class="card-body">
 						  	<div class="row">
 							  	<div align="left" style="height: 50px">
-							    	<p class="card-title" style="text-transform: capitalize;">{{ $p->title }}</p>
+							    	<p class="card-title" style="text-transform: capitalize;"><a href="{{URL::to('detail/'.$p->id)}}" style="color: black;">{{ $p->title }}</a></p>
 							    </div>
 						  	</div>
 						    <div class="row">

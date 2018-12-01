@@ -6,6 +6,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Session;
 use App\Cart;
+use App\Chat;
+use App\Profil;
 use App\Method;
 use App\Curir;
 use App\Type;
@@ -21,6 +23,14 @@ class ProductController extends Controller
         $type = Type::all();
         $data = Product::where('user_id', Auth::user()->id)->get();
         return view('shop.yourProduct', compact('type','data'));
+    }
+
+    public function detailProduct($id)
+    {
+        $type = Type::all();
+        $chat = Chat::where('product_id', $id)->get();
+        $data = Product::where('id', $id)->get();
+        return view('shop.product-detail', compact('type','chat','profil','data'));
     }
 
     public function getIndex(Request $request)
@@ -242,6 +252,25 @@ class ProductController extends Controller
         // dd($delete);
         // $delete->delete(['items']);
         return redirect()->route('product.shoppingCart');
+    }
+
+    public function comment(Request $request)
+    {   
+        $profil = Profil::where('user_id', Auth::user()->id)->get();
+        $idu = $profil;
+        if ($idu->isEmpty()) {
+            return redirect()->back(); 
+        }else{ 
+            $data = new Chat();
+            $data->user_id = Auth::user()->id;
+            $data->product_id = $request->id;
+            $data->imagePath = $idu;
+            $data->chat = $request->pesan;
+            // die($data);
+            $data->save();
+        }
+
+        return redirect()->back();
     }
 
 }

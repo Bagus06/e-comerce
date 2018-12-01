@@ -33,7 +33,7 @@
     </div>
     @else
     <div style="padding-left: 50px;padding-top: 30px;">
-        <a href="{{ redirect()->back()->getTargetUrl() }}" style="text-decoration: none;color:white;"><i class="fas fa-arrow-left fa-2x"></i></a>
+        <a href="{{ route('home') }}" style="text-decoration: none;color: white;"><i class="fas fa-arrow-left fa-2x"></i></a>
     </div>
         <div class="container emp-profile">
                 <div class="row">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Chat;
 use App\Profil;
 use App\Product;
 use Illuminate\Http\Request;
@@ -34,6 +35,10 @@ class ProfilController extends Controller
         $data->facebook = $request->facebook;
         $data->instagram = $request->instagram;
         $data->website = $request->website;
+        $data->imagePath = $filename;
+        // dd($data);
+        $data->save();
+        $data = Chat::where('user_id', Auth::user()->id)->first();
         $data->imagePath = $filename;
         // dd($data);
         $data->save();

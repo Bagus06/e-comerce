@@ -13,6 +13,11 @@ class Product extends Model
 		return $this->hasMany('App\Checkout');
 	}
 
+	public function chat()
+	{
+		return $this->hasMany('App\Chat');
+	}
+
 	public function type()
 	{
 	return $this->belongsTo('App\Type');

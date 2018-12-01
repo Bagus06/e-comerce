@@ -29,8 +29,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/memberProfil', 'ProfilController@memberProfil')->name('memberProfil');
 	Route::post('/memberProfilPost', 'ProfilController@postProfil')->name('postProfil');
 	Route::get('/makeMemberProfil', 'ProfilController@makeProfil')->name('makeProfil');
+
+	Route::post('/comment', 'ProductController@comment')->name('comment');
 });
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.getAddToCart');
+Route::get('/detail/{id}', 'ProductController@detailProduct')->name('product.detailProduct');
+
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
 Route::get('/cartCheck/{id}', 'ProductController@cartCheck')->name('cartCheck');
 Route::get('/delete/{id}', 'ProductController@deleteCart')->name('delete');
