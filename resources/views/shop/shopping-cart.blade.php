@@ -17,7 +17,7 @@
 						<li class="list-group-item">
 						<div class="text-right">
 							<div class="custom-control custom-checkbox" style="position: absolute; display: inline-flex; padding: unset;">
-							  <input @if($p['check']) checked="true" @endif type="checkbox" class="custom-control-input" name="check[]" id="customCheck{{$p['item']['id']}}" value="{{$p['item']['id']}}" onclick="location.href='{{URL::to('cartCheck/'.$p['item']['id'])}}'">
+							  <input @if($p['check']) checked="true" @endif type="checkbox" class="custom-control-input" name="check[]" id="customCheck{{$p['item']['id']}}" value="{{$p['item']['id']}}" onclick="location.href='{{URL::to('cartCheck/'.$p['item']['id'])}}'" disabled>
 							  <label class="custom-control-label" for="customCheck{{$p['item']['id']}}"></label>
 							</div>
 						</div>	
@@ -63,7 +63,7 @@
 									      </div>
 									</td>
 									<td>
-										<a class="btn btn-danger" href="{{URL::to('/delete/'.$p['item']['id'])}}">Delete</a>
+										<a class="btn btn-danger" onclick="deletep('{{$p['item']['id']}}')" href="#">Delete</a>
 									</td>
 								</tr>
 							</tbody>
@@ -162,4 +162,32 @@
 			</div>
 		</div>
 	@endif
+@endsection
+@section('scripts')
+	<script type="text/javascript">
+		function tes(){
+			alert('hhh');
+		}
+
+		function deletep(idx) {
+			swal({
+			  title: 'Are you sure?',
+			  text: "",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.value) {
+			  	location.href = '/delete/'+idx;
+			    swal(
+			      'Deleted!',
+			      'Your file has been deleted.',
+			      'success'
+			    )
+			  }
+			});
+		}
+	</script>
 @endsection

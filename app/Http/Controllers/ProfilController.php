@@ -8,6 +8,7 @@ use App\Profil;
 use App\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Ixudra\Curl\Facades\Curl;
 
 class ProfilController extends Controller
 {
@@ -53,5 +54,25 @@ class ProfilController extends Controller
         $data->save();
 
         return redirect()->route('memberProfil');
+    }
+
+    public function RajaOngkir()
+    {
+        $response = Curl::to('https://api.rajaongkir.com/starter/province')
+                ->withHeader('key: a794662c34adff0b61308efd1a5ef6a6')
+                ->asJson()
+                // ->withHeader('content-type: application/x-www-form-urlencoded')
+                // ->withData(array('origin' => '501', 'destination' => '114' ,'weight' => '1700', 'courier' => 'jne'))
+                ->get();
+
+        $responses = $response->rajaongkir->results;
+        // dd($response);
+        return view ('shop.coba', compact('responses'));
+                foreach ($response->rajaongkir->results as $key => $value) {
+                    echo $value->province_id;
+                    echo " ";
+                    echo $value->province;
+                    echo "<br>";
+                }
     }
 }

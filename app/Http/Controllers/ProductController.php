@@ -38,7 +38,25 @@ class ProductController extends Controller
     	$products = Product::all();
     	return view('shop.index', ['products' => $products]);
     }
+    // short by
 
+     public function e(Request $request)
+    {
+        $products = Product::where('type_id', 1)->get();
+        return view('shop.index', ['products' => $products]);
+    }
+
+     public function c(Request $request)
+    {
+        $products = Product::where('type_id', 2)->get();
+        return view('shop.index', ['products' => $products]);
+    }
+     public function b(Request $request)
+    {
+        $products = Product::where('type_id', 3)->get();
+        return view('shop.index', ['products' => $products]);
+    }
+    // end short by
     public function getHome(Request $request)
     {
         $products = Product::all();
@@ -186,7 +204,7 @@ class ProductController extends Controller
     {
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-
+        
         $data = new Transaksi();
         $data->user_id = Auth::user()->id;
         $data->total_all = $request->totalAll;

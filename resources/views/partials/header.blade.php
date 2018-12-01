@@ -4,9 +4,9 @@
     </div>
     <div class="col-sm" style="text-align: center; padding-top: 4px">
       <a href="{{URL::to('/')}}" class="p-2" style="color:white;">Home</a>
-      <a href="" class="p-2" style="color:white;">Electronik</a>
-      <a href="" class="p-2" style="color:white;">Cloth</a>
-      <a href="" class="p-2" style="color:white;">Baby Accesories</a>
+      <a href="{{route('e')}}" class="p-2" style="color:white;">Electronik</a>
+      <a href="{{route('c')}}" class="p-2" style="color:white;">Cloth</a>
+      <a href="{{route('b')}}" class="p-2" style="color:white;">Baby Accesories</a>
       <a href="{{URL::to('/shop')}}" class="p-2" style="color:white;">All</a>
     </div>
     <div class="col-sm" style="text-align: right; padding-bottom: 6px">

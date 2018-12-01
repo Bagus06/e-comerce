@@ -113,6 +113,7 @@
 															@csrf
 															<input type="hidden" value="{{ $all }}" name="totalAll">
 															<input type="hidden" value="{{ $d->token }}" name="token">
+															<input type="hidden" value="{{ $d->product->id }}" name="id">
 															<input type="hidden" value="{{ $d->method->pay }}  ({{ $d->method->method }})" name="method">
 															<input type="hidden" value="{{ $d->curir->curir }}" name="curir">
 															<input type="hidden" value="{{ $d->addres }}" name="addres">

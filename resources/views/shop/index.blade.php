@@ -3,6 +3,9 @@
 	e-comerce
 @endsection
 @section('content')
+@if($products->isEmpty())
+	<h1 style="text-align: center;padding-top: 250px"><strong>Product Is Empty!!!</strong></h1>
+@else
 	<div style="padding-right: 40px;padding-left: 40px; padding-top: 20px">
 	  <div class="col-12 col-sm-6 col-md-12">
 	  		<div class="row">
@@ -38,27 +41,6 @@
 			</div>
 	  </div>
 	</div>
-	<div class="modal fade" id="myModalNorm1" tabindex="-1" role="dialog" 
-	     aria-labelledby="myModalLabel" aria-hidden="true">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <!-- Modal Header -->
-	            <div class="modal-header">
-	                <h4 class="modal-title" id="myModalLabel" style="text-align: left;">
-	                    <i class="fas fa-info-circle fa-lg" style="color: red;"></i> Warning
-	                </h4>
-	            </div>
-	            
-	            <!-- Modal Body -->
-	            <div class="modal-body">
-	                <h6 align="center">Are you sure want to Delete?</h6>
-	            </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">
-						OK
-	                </button>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+</div>
+@endif
 @endsection
