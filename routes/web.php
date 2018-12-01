@@ -45,7 +45,13 @@ Route::get('/addOne/{id}', [
 ]);
 
 Route::get('/addItem/{id}', 'ProductController@addItem')->name('addItem');
+Route::get('/shortBy/electronic', 'ProductController@e')->name('e');
+Route::get('/shortBy/clots', 'ProductController@c')->name('c');
+Route::get('/shortBy/baby', 'ProductController@b')->name('b');
 
 Route::get('/coba', function(){
 	return view('shop.profil');
 });
+
+Route::get('coba', 'ProfilController@RajaOngkir')->name('coba');
+Route::post('dynamic_dependent/fetch', 'ProfilController@fetch')->name('dynamicdependent.fetch');

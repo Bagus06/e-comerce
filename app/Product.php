@@ -12,7 +12,6 @@ class Product extends Model
 	{
 		return $this->hasMany('App\Checkout');
 	}
-
 	public function type()
 	{
 	return $this->belongsTo('App\Type');

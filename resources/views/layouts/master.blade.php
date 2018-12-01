@@ -12,6 +12,7 @@
 	{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> --}}
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 	<link rel="stylesheet" href="{{ asset ('css/custom.css')}}">
+	<link rel="stylesheet" href='{{asset('css/sweetalert2.min.css')}}' rel='shortcut icon'>
 	<link href='{{asset('logo/logo.jpg')}}' rel='shortcut icon'>
 	@yield('styles')
 </head>
@@ -27,7 +28,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="{{asset('scrolling-nav.js')}}"></script>
+	<script src="{{asset('js/sweetalert2.min.js')}}"></script>
 	<script src="{{asset('js/custom.js')}}"></script>
+	@yield('scripts')
 </body>
 </html>

@@ -37,12 +37,12 @@
 			</div>
 	@endif
 	<div style="padding-right: 40px;padding-top: 20px">
-		  	<div class="row" style="padding-top: 10px">
+		  	<div class="row col-md-12" style="padding-top: 10px">
 		  		@if(count($data)>0)
 		  		@foreach($data as $d)
 		  		<div class="col-md-3"></div>
 		  		<div style="padding-bottom: 5px">
-					<li class="list-group-item">	
+					<li class="list-group-item">
 						<table>
 							<thead>
 								<tr>
