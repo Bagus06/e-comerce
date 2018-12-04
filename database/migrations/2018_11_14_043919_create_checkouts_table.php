@@ -20,10 +20,11 @@ class CreateCheckoutsTable extends Migration
             $table->integer('harga');
             $table->integer('total');
             $table->string('addres');
+            $table->string('curir');
             $table->text('note');
+            $table->integer('city_id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned()->nullable();
-            $table->integer('curir_id')->unsigned()->nullable();
             $table->integer('method_id')->unsigned()->nullable();
             $table->timestamps();
 
@@ -31,9 +32,6 @@ class CreateCheckoutsTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->foreign('curir_id')->references('id')->on('curirs')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreign('method_id')->references('id')->on('methods')

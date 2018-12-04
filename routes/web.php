@@ -58,4 +58,5 @@ Route::get('/coba', function(){
 });
 
 Route::get('coba', 'ProfilController@RajaOngkir')->name('coba');
+Route::get('/koko', 'ProfilController@coba')->name('dynamicdependent.fetch');
 Route::post('dynamic_dependent/fetch', 'ProfilController@fetch')->name('dynamicdependent.fetch');

@@ -26,7 +26,7 @@
 							<span class="review-no" style="padding-left: 15px"> terjual</span>
 						</div>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<button class="add-to-cart btn btn-default" type="button"><a style="text-decoration: none; color: black;" href="{{ route ('product.getAddToCart', ['id' => $data[0]->id])}}">add to cart</a></button>
 						</div>
 					</div>
 				</div>

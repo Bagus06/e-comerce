@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Intervention\Image\ImageManagerStatic as Image;
+use Ixudra\Curl\Facades\Curl;
 use Illuminate\Http\Request;
 use Session;
 use App\Cart;
@@ -65,9 +66,19 @@ class ProductController extends Controller
 
     public function getCheck(Request $request, $token)
     {
-        
-        $dat = Checkout::where('token', $token)->get();
-        return view('shop.checkout',compact('dat'));
+       $dat = Checkout::where('token', $token)->get();
+        $cost = $dat[0]->curir;
+        $city = $dat[0]->city_id;
+        $responses = Curl::to('https://api.rajaongkir.com/starter/cost')
+                ->withHeader('key: a794662c34adff0b61308efd1a5ef6a6')
+                ->withHeader('content-type: application/x-www-form-urlencoded')
+                ->withData(array('origin' => '501', 'destination' => $city ,'weight' => '1700', 'courier' => $cost))
+                ->post();
+
+        $responses = json_decode($responses);
+        $responses = $responses->rajaongkir->results[0]->costs;
+        // dd($responses);
+        return view('shop.checkout',compact('dat', 'responses'));
     }
 
     public function toPay(Request $request)
@@ -94,6 +105,7 @@ class ProductController extends Controller
 
     	$request->session()->put('cart', $cart);
     	// dd($request->session()->get('cart'));
+        Session()->put('success','Add Product to Cart successfully.');
     	return redirect()->route('product.index');
     }
 
@@ -103,11 +115,23 @@ class ProductController extends Controller
             return view('shop.shopping-cart', ['product' => null]);
         }
         $oldCart = Session::get('cart');
+        $method = Method::all();
+        // dd($method);
         $cart = new Cart($oldCart);
         // dd($cart);
-        $method = Method::all();
-        $del = Curir::all();
-        return view('shop.shopping-cart', ['product' => $cart->items, 'totalPrice' => $cart->totalPrice,'method' => $method, 'del' => $del]);
+        $response = Curl::to('https://api.rajaongkir.com/starter/province')
+                ->withHeader('key: a794662c34adff0b61308efd1a5ef6a6')
+                ->asJson()
+                ->get();
+        $response = $response->rajaongkir->results;
+        $responses = Curl::to('https://api.rajaongkir.com/starter/city')
+                ->withHeader('key: a794662c34adff0b61308efd1a5ef6a6')
+                ->asJson()
+                ->get();
+
+        $responses = $responses->rajaongkir->results;
+        // dd($response);
+        return view('shop.shopping-cart', ['product' => $cart->items, 'totalPrice' => $cart->totalPrice, 'response' =>$response, 'responses' =>$responses, 'method' => $method]);
     }
 
     public function deleteCart(Request $request, $id)
@@ -123,6 +147,7 @@ class ProductController extends Controller
         }
         $request->session()->put('cart', $cart);
         // dd($cart->items);
+        Session()->put('warning','Cart Delete successfully.');
         return redirect()->back();
     }
 
@@ -179,6 +204,16 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         foreach ($cart->items as $key => $value) {
+            $id = $cart->items[1]['item']['id'];
+            $data = Product::where('id', $id)->get();
+            $prod_qty = $data[0]->qty;
+            $title = $data[0]->title;
+            $qty = $value['qty'];
+
+            if ($prod_qty < $qty) {
+                Session()->put('error','Sorry, the ' .$title. ' product stock is running out.');
+                return redirect()->back(); 
+            }
             if ($value['check'] == true) {
                 $data = new Checkout();
                 $data->token = $token;
@@ -188,9 +223,9 @@ class ProductController extends Controller
                 $data->addres = $request->address;
                 $data->note = $request->note;
                 $data->user_id = Auth::user()->id;
+                $data->city_id = $request->city;
+                $data->curir = $request->curir;
                 $data->product_id = $value['item']['id'];
-                $data->curir_id = $request->delivery;
-                $data->method_id = $request->pay;
                 $data->save();
             }
         }
@@ -204,14 +239,15 @@ class ProductController extends Controller
     {
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
+        $token = $request->token;
         
         $data = new Transaksi();
         $data->user_id = Auth::user()->id;
         $data->total_all = $request->totalAll;
-        $data->token = $request->token;
+        $data->token = $token;
         $data->mthod = $request->method;
         $data->curir = $request->curir;
-        $data->address = $request->addres;
+        $data->address = $request->address;
         $data->save();
         // dd($data);
 
@@ -277,6 +313,7 @@ class ProductController extends Controller
         $profil = Profil::where('user_id', Auth::user()->id)->get();
         $idu = $profil;
         if ($idu->isEmpty()) {
+            Session()->put('warning','Complete your profile first.');
             return redirect()->back(); 
         }else{ 
             $data = new Chat();
@@ -287,7 +324,7 @@ class ProductController extends Controller
             // die($data);
             $data->save();
         }
-
+        Session()->put('info','Send comment successfully.');
         return redirect()->back();
     }
 

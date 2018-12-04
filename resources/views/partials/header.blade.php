@@ -15,7 +15,7 @@
   </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #560081;padding-top: 35px">
-  <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/logo1.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
+  <a class="navbar-brand" href="#" style="color:white;"><img src="{{asset('logo/dcnewif.png')}}" alt="logo" style="width: 35px"></i> My-BAG</a>
   <div class="container">
     {{-- <div class="row col-md-12"> --}}
       {{-- <div class="col-sm col-md-2"> --}}

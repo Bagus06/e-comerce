@@ -14,12 +14,7 @@ class CartsSeeder extends Seeder
      */
     public function run()
     {
-		// Sample Curir
-		$curir1 = Curir::create(['curir'=>'jne','delivery'=>10]);
-		$curir2 = Curir::create(['curir'=>'j&t','delivery'=>11]);
-		$curir3 = Curir::create(['curir'=>'gojek','delivery'=>9]);
-
-		// Sample Payment
+    	// Sample Payment
 		$pay1 = Method::create(['method'=>'transfer','pay'=>'BRI','description'=>'no des']);
 		$pay2 = Method::create(['method'=>'transfer','pay'=>'BNI','description'=>'no des']);
 		$pay3 = Method::create(['method'=>'transfer','pay'=>'BCA','description'=>'no des']);

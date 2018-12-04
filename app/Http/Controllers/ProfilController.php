@@ -22,27 +22,28 @@ class ProfilController extends Controller
     public function postProfil(Request $request)
     {	
     	$image = $request->img;
-    	if ($image == null) {
-    		$image = $request->is;
-    		$filename = $image;
+        // dd($image);
+        if ($image == null) {
+            Session()->put('error','Sorry for failing to save the profile, you must fill in the profile photo.');
+            return redirect()->route('memberProfil');
     	}else{
 	        $filename = time() . '.' .  $image->getClientOriginalName();
 	        $path = public_path('profil/' . $filename);
 	        Image::make($image->getRealPath())->resize(190, 150)->save($path);
-    	}
-
-        $data = Profil::where('user_id', Auth::user()->id)->first();
-        $data->phone = $request->phone;
-        $data->facebook = $request->facebook;
-        $data->instagram = $request->instagram;
-        $data->website = $request->website;
-        $data->imagePath = $filename;
-        // dd($data);
-        $data->save();
-        $data = Chat::where('user_id', Auth::user()->id)->first();
-        $data->imagePath = $filename;
-        // dd($data);
-        $data->save();
+            $data = Profil::where('user_id', Auth::user()->id)->first();
+            $data->phone = $request->phone;
+            $data->facebook = $request->facebook;
+            $data->instagram = $request->instagram;
+            $data->website = $request->website;
+            $data->imagePath = $filename;
+            // dd($data);
+            $data->save();
+            $data = Chat::where('user_id', Auth::user()->id)->first();
+            $data->imagePath = $filename;
+            // dd($data);
+            $data->save();
+            Session()->put('success','Save profil successfully.');
+        }
 
         return redirect()->route('memberProfil');
     }
@@ -74,5 +75,11 @@ class ProfilController extends Controller
                     echo $value->province;
                     echo "<br>";
                 }
+    }
+
+    public function coba(Request $request)
+    {
+        Session()->put('success','Item created successfully.');
+        return view('welcome');
     }
 }

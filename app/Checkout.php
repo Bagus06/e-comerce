@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Checkout extends Model
 {
     protected $fillable = [
-        'token', 'jumlah','harga','user_id','product_id','addres','note','curir_id','pay_id','total',
+        'token', 'jumlah','harga','user_id','product_id','addres','curir', 'note','city_id','pay_id','total',
     ];
 
     public function product()
@@ -17,10 +17,6 @@ class Checkout extends Model
 	public function user()
 	{
 	return $this->belongsTo('App\User');
-	}
-	public function curir()
-	{
-	return $this->belongsTo('App\Curir');
 	}
 	public function method()
 	{

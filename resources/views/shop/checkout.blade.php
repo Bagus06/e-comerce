@@ -45,11 +45,6 @@
 												<td style="text-align: right;"><span>Rp.{{ $d->harga }}.000,00</span></td>
 											</tr>
 											<tr style="height: 30px">
-												<td>Pay Method</td>
-												<td>:</td>
-												<td style="text-align: right;"><span>{{ $d->method->pay }}  ({{ $d->method->method }})</span></td>
-											</tr>
-											<tr style="height: 30px">
 												<td>Subtotal</td>
 												<td>:</td>
 												<td style="text-align: right;"><span>Rp.{{ $d->total }}.000,00</span></td>
@@ -66,10 +61,10 @@
 			  </div>
 			</div>
 		@endforeach
-		@php
+		{{-- @php
 			$delivery = $d->curir->delivery;
 			$all = $total + $delivery;
-		@endphp
+		@endphp --}}
 		{{-- <p>{{$d->token}}</p> --}}
 		<div style="padding-top: 2px"></div>
 		<div class="container">
@@ -90,9 +85,22 @@
 											</thead>
 											<tbody>		
 											<tr style="height: 30px">
+												<td style="text-align: left;">
+													<div class="form-group">
+								                    <label for="curir">Curir</label>
+								                      <select name="curir" id="curir" class="form-control" required>
+								                      	<option>Select Curir</option>
+								                      	@foreach($responses as $res)
+								                      		<option value="{{$res->cost[0]->value}}">{{$res->service}}/{{$res->cost[0]->etd}}Hari (Rp.{{$res->cost[0]->value}}.00)</option>
+								                      	@endforeach
+								                      </select>
+								                  	</div>
+												</td>
+											</tr>
+											<tr style="height: 30px">
 												<td>Delivery</td>
 												<td></td>
-												<td style="text-align: right;"><span>{{ $d->curir->curir }} -> Rp.{{ $d->curir->delivery }}.000,00</span></td>
+												<td style="text-align: right;">Rp. <span id="deliv"></span>.000,00</td>
 											</tr>
 											<tr style="height: 30px">
 												<td>Subtotal</td>
@@ -100,7 +108,7 @@
 												<td style="text-align: right;"><span>Rp.{{$total}}.000,00</span></td>
 											</tr>
 											<tr>
-												<td><strong>Total: Rp.{{$all}}.000,00</strong></td>
+												<td><strong>Total: Rp. <span id="total"></span></strong></td>
 												<td></td>
 												<td style="text-align: right;"></td>
 											</tr>
@@ -111,12 +119,12 @@
 													<td style="text-align: right;">
 														<form action="{{URL::to('checkout/'.$d->token)}}" method="post">
 															@csrf
-															<input type="hidden" value="{{ $all }}" name="totalAll">
-															<input type="hidden" value="{{ $d->token }}" name="token">
-															<input type="hidden" value="{{ $d->product->id }}" name="id">
-															<input type="hidden" value="{{ $d->method->pay }}  ({{ $d->method->method }})" name="method">
-															<input type="hidden" value="{{ $d->curir->curir }}" name="curir">
-															<input type="hidden" value="{{ $d->addres }}" name="addres">
+															<input type="hidden" value="" id="delivery" name="delivery">
+															<input type="hidden" value="" id="totals" name="totalAll">
+															<input type="hidden" value="{{$d->token}}" name="token">
+															<input type="hidden" value="{{$d->method_id}}" name="method">
+															<input type="hidden" value="{{$d->curir}}" name="curir">
+															<input type="hidden" value="{{$d->addres}}" name="address">
 
 															<button class="btn btn-danger"> <a href="{{URL::to('/cencelCheck/'.$d->token)}}" style="color: white; text-decoration: none; ">Cencel </a> </button>
 															<button type="submit" class="btn btn-success">Go</button>
@@ -134,4 +142,17 @@
     	</div>
   	</div>
 </div>
+@endsection
+@section('scripts')
+	<script type="text/javascript">
+		$('#curir').change(function() {
+			var value = $(this).val();
+			var Rp = value/1000;
+			var total = Rp + {{$total}};
+			$('#delivery').val(Rp);
+			$('#totals').val(total);
+			$('#deliv').html(Rp);
+			$('#total').html(total + '.000,00');
+		});
+	</script>
 @endsection

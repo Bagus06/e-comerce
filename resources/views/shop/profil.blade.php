@@ -257,7 +257,6 @@
                             @endif
                             <input type="file" name="img" style="padding-top: 10px" value="{{$data[0]->imagePath}}">
                            </div>
-                           <input type="hidden" name="is" value="{{$data[0]->imagePath}}">
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -279,5 +278,6 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="{{asset('scrolling-nav.js')}}"></script>
 	<script src="{{asset('js/custom.js')}}"></script>
+    @include('flash-message')
 </body>
 </html>

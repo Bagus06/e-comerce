@@ -3,6 +3,7 @@
 	e-comerce
 @endsection
 @section('content')
+
 <br>
 <br>
  	<h3 style="color: #560081;"><strong>Cart</strong></h3>
@@ -14,10 +15,11 @@
 			<div class="col-md-6">
 				<ul class="list-group">
 					@foreach($product as $p)
+					<div>
 						<li class="list-group-item">
 						<div class="text-right">
 							<div class="custom-control custom-checkbox" style="position: absolute; display: inline-flex; padding: unset;">
-							  <input @if($p['check']) checked="true" @endif type="checkbox" class="custom-control-input" name="check[]" id="customCheck{{$p['item']['id']}}" value="{{$p['item']['id']}}" onclick="location.href='{{URL::to('cartCheck/'.$p['item']['id'])}}'" disabled>
+							  <input @if($p['check']) checked="true" @endif type="checkbox" class="custom-control-input" name="check[]" id="customCheck{{$p['item']['id']}}" value="{{$p['item']['id']}}" onclick="location.href='{{URL::to('cartCheck/'.$p['item']['id'])}}'">
 							  <label class="custom-control-label" for="customCheck{{$p['item']['id']}}"></label>
 							</div>
 						</div>	
@@ -70,6 +72,7 @@
 						</table>
 
 						</li>
+					</div>
 					@endforeach
 					<li class="list-group-item">
 						<div style="padding-left: 20px; padding-bottom: 20px;">
@@ -109,15 +112,25 @@
 		                
 		                <form role="form" action="{{route('postCheck')}}" method="post">
 		                	@csrf
-		                  <div class="form-group">
-		                    <label for="address">Address</label>
-		                      <textarea class="form-control" name="address" id="address" cols="30" rows="3" required></textarea>
-		                  </div>
-		                  <div class="form-group">
-		                    <label for="note">Note</label>
-		                      <textarea class="form-control" name="note" id="note" cols="30" rows="3" required></textarea>
-		                  </div>
-		                  <div class="form-group">
+		                	<div class="form-group">
+		                    <label for="prov">Province</label>
+		                      <select name="prov" id="prov" class="form-control" required>
+		                      	<option>Select Provice</option>
+		                      	@foreach($response as $m)
+		                      		<option value="{{ $m->province_id }}">{{ $m->province }}</option>
+		                      	@endforeach
+		                      </select>
+		                  	</div>
+		                  	<div class="form-group">
+		                    <label for="city">City</label>
+		                      <select name="city" id="city" class="form-control" required>
+		                      	<option>Select City</option>
+		                      	@foreach($responses as $c)
+		                      		<option value="{{ $c->city_id }}">{{ $c->city_name }}</option>
+		                      	@endforeach
+		                      </select>
+		                  	</div>
+		                  	<div class="form-group">
 		                    <label for="pay">Method to Pay</label>
 		                      <select name="pay" id="pay" class="form-control" required>
 		                      	<option>Select Method</option>
@@ -125,15 +138,23 @@
 		                      		<option value="{{ $m->id }}">{{ $m->method }} -> {{ $m->pay }}</option>
 		                      	@endforeach
 		                      </select>
+		                  	</div>
+		                  	<div class="form-group">
+		                    <label for="curir">Curir</label>
+		                      <select name="curir" id="curir" class="form-control" required>
+		                      	<option>Select Curir</option>
+		                      	<option value="jne">JNE</option>
+		                      	<option value="pos">POS</option>
+		                      	<option value="tiki">TIKI</option>
+		                      </select>
+		                  	</div>
+		                  <div class="form-group">
+		                    <label for="address">Address</label>
+		                      <textarea class="form-control" name="address" id="address" cols="30" rows="3" required></textarea>
 		                  </div>
 		                  <div class="form-group">
-		                    <label for="delivery">Delivery</label>
-		                      <select name="delivery" id="delivery" class="form-control" required>
-		                      	<option>Select Pelivery</option>
-		                      	@foreach($del as $d)
-		                      		<option value="{{ $d->id }}">{{ $d->curir }} -> Rp. {{$d->delivery}}.000,00</option>
-		                      	@endforeach
-		                      </select>
+		                    <label for="note">Note</label>
+		                      <textarea class="form-control" name="note" id="note" cols="30" rows="3" required></textarea>
 		                  </div>
 		            <!-- Modal Footer -->
 		            <div class="modal-footer">
@@ -164,30 +185,4 @@
 	@endif
 @endsection
 @section('scripts')
-	<script type="text/javascript">
-		function tes(){
-			alert('hhh');
-		}
-
-		function deletep(idx) {
-			swal({
-			  title: 'Are you sure?',
-			  text: "",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
-			}).then((result) => {
-			  if (result.value) {
-			  	location.href = '/delete/'+idx;
-			    swal(
-			      'Deleted!',
-			      'Your file has been deleted.',
-			      'success'
-			    )
-			  }
-			});
-		}
-	</script>
 @endsection
