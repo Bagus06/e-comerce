@@ -32,27 +32,6 @@
 	<script src="{{asset('js/sweetalert2.min.js')}}"></script>
 	<script src="{{asset('js/custom.js')}}"></script>
 	@include('flash-message')
-	<script type="text/javascript">
-		function tes(){
-			alert('hhh');
-		}
-
-		function del() {
-			swal({
-			  title: 'Are you sure?',
-			  text: "",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes, delete it!'
-			}).then((result) => {
-			  if (result.value) {
-			  	location.href = '';
-			  }
-			});
-		}
-	</script>
 	@yield('scripts')
 </body>
 </html>

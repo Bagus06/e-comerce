@@ -24,12 +24,14 @@ class ProfilController extends Controller
     	$image = $request->img;
         // dd($image);
         if ($image == null) {
-            Session()->put('error','Sorry for failing to save the profile, you must fill in the profile photo.');
-            return redirect()->route('memberProfil');
+           $image = $request->is;
+            $filename = $image;
     	}else{
 	        $filename = time() . '.' .  $image->getClientOriginalName();
 	        $path = public_path('profil/' . $filename);
 	        Image::make($image->getRealPath())->resize(190, 150)->save($path);
+        }
+        // dd($filename);
             $data = Profil::where('user_id', Auth::user()->id)->first();
             $data->phone = $request->phone;
             $data->facebook = $request->facebook;
@@ -38,12 +40,13 @@ class ProfilController extends Controller
             $data->imagePath = $filename;
             // dd($data);
             $data->save();
-            $data = Chat::where('user_id', Auth::user()->id)->first();
-            $data->imagePath = $filename;
-            // dd($data);
-            $data->save();
+            $chat = Chat::where('user_id', Auth::user()->id)->first();
+            if ($chat == null) {
             Session()->put('success','Save profil successfully.');
-        }
+            }else{
+            $chat->imagePath = $filename;
+            $chat->save();
+            }
 
         return redirect()->route('memberProfil');
     }

@@ -257,6 +257,7 @@
                             @endif
                             <input type="file" name="img" style="padding-top: 10px" value="{{$data[0]->imagePath}}">
                            </div>
+                           <input type="hidden" name="is" value="{{$data[0]->imagePath}}">
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">

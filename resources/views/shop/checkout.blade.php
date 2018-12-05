@@ -126,7 +126,8 @@
 															<input type="hidden" value="{{$d->curir}}" name="curir">
 															<input type="hidden" value="{{$d->addres}}" name="address">
 
-															<button class="btn btn-danger"> <a href="{{URL::to('/cencelCheck/'.$d->token)}}" style="color: white; text-decoration: none; ">Cencel </a> </button>
+															
+															<a onclick="cencel('{{$d->token}}')" class="btn btn-danger" style="color: white; text-decoration: none; ">Cencel</a>
 															<button type="submit" class="btn btn-success">Go</button>
 													</form>
 												</td>
@@ -154,5 +155,25 @@
 			$('#deliv').html(Rp);
 			$('#total').html(total + '.000,00');
 		});
+		function tes(){
+			alert('hhh');
+		}
+
+		function cencel(idx) {
+			swal({
+			  title: 'Are you sure?',
+			  text: "",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+			  if (result.value) {
+			  	location.href = '/cencelCheck/'+idx;
+			  }
+			});
+		}
+
 	</script>
 @endsection

@@ -45,7 +45,7 @@
 									    			</tr>
 									    			<tr>
 									    				<td>Curir</td>
-									    				<td>: {{ $d->curir->curir }}</td>
+									    				<td>: {{ $d->curir }}</td>
 									    			</tr>
 									    			<tr>
 									    				<td>Total</td>

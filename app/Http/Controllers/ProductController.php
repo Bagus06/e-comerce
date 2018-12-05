@@ -180,6 +180,7 @@ class ProductController extends Controller
         $check = Checkout::where('token', $checkout)->get()->each->delete();
         $transaksi = Transaksi::where('id', $id)->get()->each->delete();
 
+        Session()->put('success','Cencel To Buy successfully.');
         return redirect()->route('toPay');
     }
 
@@ -226,6 +227,7 @@ class ProductController extends Controller
                 $data->city_id = $request->city;
                 $data->curir = $request->curir;
                 $data->product_id = $value['item']['id'];
+                $data->method_id = $request->pay;
                 $data->save();
             }
         }
@@ -240,18 +242,25 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $token = $request->token;
+        $cek =  $request->totalAll;
+        if ($cek == null) {
+            Session()->put('error','Select service curir.');
+            return redirect()->back(); 
+        }else{            
+            $data = new Transaksi();
+            $data->user_id = Auth::user()->id;
+            $data->total_all = $cek;
+            $data->token = $token;
+            $data->mthod = 'hhh';
+            $data->curir = $request->curir;
+            $data->address = $request->address;
+            $data->save();
+        }
         
-        $data = new Transaksi();
-        $data->user_id = Auth::user()->id;
-        $data->total_all = $request->totalAll;
-        $data->token = $token;
-        $data->mthod = $request->method;
-        $data->curir = $request->curir;
-        $data->address = $request->address;
-        $data->save();
         // dd($data);
 
         Session::forget('cart');
+        Session()->put('success','successfully.');
         return redirect()->route('toPay');
     }
 

@@ -49,7 +49,7 @@
 					      	</td>
 					      	<td style="padding-left: 20px">
 					      		<button class="btn btn-primary"><a href="" style="color: white; text-decoration: none;">Procesed</a></button>
-					      		<button class="btn btn-danger"><a href="{{URL::to('cencelBuy/'.$t->id)}}" style="color: white; text-decoration: none;">Cencel</a></button>
+					      		<button class="btn btn-danger"><a onclick="cencel('{{$t->id}}')" style="color: white; text-decoration: none;">Cencel</a></button>
 					  	    </td>
 					  	  </tr>
 					  	</tbody>
@@ -60,4 +60,21 @@
 	@endif
 @endsection
 @section('scripts')
+<script type="text/javascript">
+	function cencel(idx) {
+			swal({
+			  title: 'Are you sure?',
+			  text: "",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+			  if (result.value) {
+			  	location.href = '/cencelBuy/'+idx;
+			  }
+			});
+		}
+</script>
 @endsection

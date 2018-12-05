@@ -185,4 +185,26 @@
 	@endif
 @endsection
 @section('scripts')
+<script type="text/javascript">
+		function tes(){
+			alert('hhh');
+		}
+
+		function deletep(idx) {
+			swal({
+			  title: 'Are you sure?',
+			  text: "",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.value) {
+			  	location.href = '/delete/'+idx;
+			  }
+			});
+		}
+
+	</script>
 @endsection
