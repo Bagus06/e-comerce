@@ -3,8 +3,12 @@
 	e-comerce
 @endsection
 @section('content')
+<div>
+	<h1 align="center" style="padding-top: 20px; color: #510079;"><strong>Branch {{$user}}</strong></h1>
+</div>
+<strong><hr color="#510079"></strong>
 @if($products->isEmpty())
-	<h1 style="text-align: center;padding-top: 250px;padding-bottom: 300px"><strong>Product Is Empty!!!</strong></h1>
+	<h1 style="text-align: center;padding-top: 250px"><strong>Product Is Empty!!!</strong></h1>
 @else
 	<div style="padding-right: 40px;padding-left: 40px; padding-top: 20px">
 	  <div class="col-12 col-sm-6 col-md-12">

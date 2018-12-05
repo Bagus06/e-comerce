@@ -21,14 +21,15 @@
       {{-- <div class="col-sm col-md-2"> --}}
       {{-- </div> --}}
       {{-- <div class="col-sm col-md-8 text-center"> --}}
-        <div style="display: contents;" >
-            <div class="input-group" style=" margin-left: 25%; margin-right: 25%;">
-              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-              <span class="input-group-append">
-                  <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
-              </span>
-            </div>
-        </div>
+              <form action="{{route('search')}}" method="post" style="display: contents;"> 
+              @csrf 
+                <div class="input-group" style=" margin-left: 25%; margin-right: 25%;">
+                    <input name="name" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <span class="input-group-append">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+                    </span>
+                </div>
+              </form>
       {{-- </div> --}}
       {{-- <div class="col-sm col-md-2"> --}}
       {{-- </div> --}}

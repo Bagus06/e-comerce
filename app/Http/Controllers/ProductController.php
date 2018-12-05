@@ -6,8 +6,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Http\Request;
 use Session;
+use App\User;
 use App\Cart;
 use App\Chat;
+use App\Sold;
 use App\Profil;
 use App\Method;
 use App\Curir;
@@ -19,6 +21,12 @@ use Auth;
 
 class ProductController extends Controller
 {
+    public function search(Request $request)
+    {
+        $name = $request->name;
+        $products = Product::where('title', 'LIKE', "%$name%")->get();
+        return view('shop.index', ['products' => $products]);
+    }
     public function yourProduct(Request $request)
     {
         $type = Type::all();
@@ -58,6 +66,50 @@ class ProductController extends Controller
         return view('shop.index', ['products' => $products]);
     }
     // end short by
+    // branch
+     public function x(Request $request)
+    {
+        $products = Product::where('user_id', 3)->get();
+        $user = User::where('id', 3)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function s(Request $request)
+    {
+        $products = Product::where('user_id', 4)->get();
+        $user = User::where('id', 4)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function sp(Request $request)
+    {
+        $products = Product::where('user_id', 5)->get();
+        $user = User::where('id', 5)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function a(Request $request)
+    {
+        $products = Product::where('user_id', 6)->get();
+        $user = User::where('id', 6)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function cu(Request $request)
+    {
+        $products = Product::where('user_id', 7)->get();
+        $user = User::where('id', 7)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function n(Request $request)
+    {
+        $products = Product::where('user_id', 8)->get();
+        $user = User::where('id', 8)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+    // endbranch
     public function getHome(Request $request)
     {
         $products = Product::all();
@@ -211,11 +263,11 @@ class ProductController extends Controller
             $title = $data[0]->title;
             $qty = $value['qty'];
 
-            if ($prod_qty < $qty) {
-                Session()->put('error','Sorry, the ' .$title. ' product stock is running out.');
-                return redirect()->back(); 
-            }
             if ($value['check'] == true) {
+                if ($prod_qty < $qty) {
+                    Session()->put('error','Sorry, the ' .$title. ' product stock is running out.');
+                    return redirect()->back(); 
+                }
                 $data = new Checkout();
                 $data->token = $token;
                 $data->jumlah = $value['qty'];
@@ -251,7 +303,7 @@ class ProductController extends Controller
             $data->user_id = Auth::user()->id;
             $data->total_all = $cek;
             $data->token = $token;
-            $data->mthod = 'hhh';
+            $data->mthod = $request->method;
             $data->curir = $request->curir;
             $data->address = $request->address;
             $data->save();
@@ -271,9 +323,10 @@ class ProductController extends Controller
         $path = public_path('img/' . $filename);
         Image::make($image->getRealPath())->resize(200, 230)->save($path);
 
+        $title = $request->title;
         $data = new Product();
         $data->imagePath = $filename;
-        $data->title = $request->title;
+        $data->title = $title;
         $data->description = $request->des;
         $data->type_id = $request->type;
         $data->user_id = Auth::user()->id;
@@ -281,7 +334,7 @@ class ProductController extends Controller
         $data->price = $request->price;
         $data->save();
         // dd($data);
-
+        Session()->put('info','Add product ' .$title. ' successfully.');
         return redirect()->route('yourProduct');
     }
 
@@ -320,11 +373,12 @@ class ProductController extends Controller
     public function comment(Request $request)
     {   
         $profil = Profil::where('user_id', Auth::user()->id)->get();
-        $idu = $profil;
-        if ($idu->isEmpty()) {
+        // dd($idu);
+        if ($profil->isEmpty()) {
             Session()->put('warning','Complete your profile first.');
             return redirect()->back(); 
-        }else{ 
+        }else{
+            $idu = $profil[0]->imagePath;
             $data = new Chat();
             $data->user_id = Auth::user()->id;
             $data->product_id = $request->id;

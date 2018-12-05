@@ -7,7 +7,7 @@
 <h3 style="color: #560081;"><strong>To Pay</strong></h3>
 <hr>
 	@if($trans->isEmpty())
-		<div class="row">
+		<div class="row" style="padding-bottom: 300px">
 			<div class="col-md-12">
 				<h2 style="text-align: center;">No Item in To Pay!!</h2>
 			</div>

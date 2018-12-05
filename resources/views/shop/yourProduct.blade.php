@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 	@if(count($data)>0)
-		<div class="col-md-12" style="padding-top: 20px">
+		<div class="col-md-12" style="padding-top: 20px;">
 				<div class="row">
 					<div class="col-md-3"></div>
 					<div style="" class="row">
@@ -91,7 +91,7 @@
 				@endforeach
 				@else
 				<div class="col-md-3"></div>
-					<div class="col-md-6">
+					<div class="col-md-6" style="padding-bottom: 300px">
 						<h2 style="text-align: center;">You don't have a product yet!!</h2><br>
 						<div style="padding-left: 150px; padding-right: 150px">
 							<div class="card w-100" style="text-align: center;">

@@ -49,9 +49,21 @@ Route::get('/addOne/{id}', [
 ]);
 
 Route::get('/addItem/{id}', 'ProductController@addItem')->name('addItem');
+
+// Srotby
 Route::get('/shortBy/electronic', 'ProductController@e')->name('e');
 Route::get('/shortBy/clots', 'ProductController@c')->name('c');
 Route::get('/shortBy/baby', 'ProductController@b')->name('b');
+
+// branch
+Route::get('/XIAOMI', 'ProductController@x')->name('x');
+Route::get('/SAMSUNG', 'ProductController@s')->name('s');
+Route::get('/Sprime', 'ProductController@sp')->name('sp');
+Route::get('/ADIDAS', 'ProductController@a')->name('a');
+Route::get('/Cussons', 'ProductController@cu')->name('cu');
+Route::get('/NIKE', 'ProductController@n')->name('n');
+
+Route::post('/search', 'ProductController@search')->name('search');
 
 Route::get('/coba', function(){
 	return view('shop.profil');

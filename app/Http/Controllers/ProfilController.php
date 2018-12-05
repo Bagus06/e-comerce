@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Chat;
 use App\Profil;
 use App\Product;
+use App\Chat;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Ixudra\Curl\Facades\Curl;
@@ -82,7 +82,10 @@ class ProfilController extends Controller
 
     public function coba(Request $request)
     {
-        Session()->put('success','Item created successfully.');
-        return view('welcome');
+        $data = Chat::all();
+        $path = $data[0]->imagePath;
+        $path = json_decode($path);
+        dd($path);
+        return view('welcome', compact('data'));
     }
 }
