@@ -67,7 +67,7 @@
 		@endphp --}}
 		{{-- <p>{{$d->token}}</p> --}}
 		<div style="padding-top: 2px"></div>
-		<div class="container">
+		<div class="container" style="padding-bottom: 100px">
 			  	<div class="row">
 			    	<div class="col-sm"></div>
 			    	<div class="col-sm col-md-8">

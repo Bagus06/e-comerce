@@ -105,27 +105,27 @@
 	  <div class="row">
 	    <div class="col-sm" style="text-align: center;">
 	    	<div class="row col-md-12">
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/1024px-Xiaomi_logo.svg.png" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('x')}}" style="color: black;"><strong>XIAOMI</strong></a>
 			    </div>
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="https://thegreatergroup.com/wp-content/uploads/samsung-logo.jpeg" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('s')}}" style="color: black;"><strong>SAMSUNG</strong></a>
 			    </div>
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="https://images-na.ssl-images-amazon.com/images/I/6196HMYUtVL._SX425_.jpg" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('sp')}}" style="color: black;"><strong>Sprime</strong></a>
 			    </div>
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="https://upload.wikimedia.org/wikipedia/de/5/50/Adidas_klassisches_logo.svg" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('a')}}" style="color: black;"><strong>ADIDAS</strong></a>
 			    </div>
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="https://pbs.twimg.com/profile_images/641165449409880064/Z_q8SfLC_400x400.jpg" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('cu')}}" style="color: black;"><strong>Cussons</strong></a>
 			    </div>
-			    <div class="" style="padding-right: 48px;padding-left: 48px">
+			    <div class="" style="padding-right: 38px;padding-left: 38px">
 			     	<img src="http://www.creteplus.gr/assets/pages/130bc-nikelogo.jpg" style="width:100px; height:100px; " alt="Card image cap" class="rounded-circle"><br>
 			     	<a href="{{route('n')}}" style="color: black;"><strong>NIKE</strong></a>
 			    </div>

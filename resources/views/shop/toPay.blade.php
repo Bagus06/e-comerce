@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	@else
-			<div class="row">
+			<div class="row"   style="padding-bottom: 100px">
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<table class="table table-bordered">
@@ -37,7 +37,7 @@
 						      <th>{{$nom}}</th>
 						      <td>
 						      	<h6>{{$t->curir}}</h6>
-						      	<h6>{{$t->mthod}}</h6>
+						      	<h6>{{$t->method}}</h6>
 						      	<h6>{{$t->created_at}}</h6>
 						      	<h6>{{$t->address}}</h6>
 						      </td>

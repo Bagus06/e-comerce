@@ -10,7 +10,7 @@
 <hr>
 	@if(session::has('cart'))
 	@if(count($product)>0)
-		<div class="row col-md-12">
+		<div class="row col-md-12" style="padding-bottom: 100px">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<ul class="list-group">
@@ -170,14 +170,14 @@
 		</div>
 		</form>
 	@else
-		<div class="row">
+		<div class="row" style="padding-bottom: 300px">
 			<div class="col-md-12">
 				<h2 style="text-align: center;">No Item in Cart!!</h2>
 			</div>
 		</div>
 	@endif
 	@else
-		<div class="row">
+		<div class="row"  style="padding-bottom: 300px">
 			<div class="col-md-12">
 				<h2 style="text-align: center;">No Item in Cart!!</h2>
 			</div>

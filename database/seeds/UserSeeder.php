@@ -28,6 +28,13 @@ class UserSeeder extends Seeder
 
 		// Membuat sample member
 		$member = new User();
+		$member->name = "Vera Graha";
+		$member->email = 'veragraha1@gmail.com';
+		$member->password = bcrypt('rahasia');
+		$member->save();
+		
+		// Membuat sample member
+		$member = new User();
 		$member->name = "XIAOMI";
 		$member->email = 'XIAOMI@gmail.com';
 		$member->password = bcrypt('rahasia');
@@ -68,11 +75,5 @@ class UserSeeder extends Seeder
 		$member->password = bcrypt('rahasia');
 		$member->save();
 
-		// Membuat sample member
-		$member = new User();
-		$member->name = "Vera Graha";
-		$member->email = 'veragraha1@gmail.com';
-		$member->password = bcrypt('rahasia');
-		$member->save();
     }
 }

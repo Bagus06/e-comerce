@@ -69,43 +69,43 @@ class ProductController extends Controller
     // branch
      public function x(Request $request)
     {
-        $products = Product::where('user_id', 3)->get();
-        $user = User::where('id', 3)->get();
-        $user = $user[0]->name;
-        return view('shop.branch', ['products' => $products, 'user' => $user]);
-    }
-     public function s(Request $request)
-    {
         $products = Product::where('user_id', 4)->get();
         $user = User::where('id', 4)->get();
         $user = $user[0]->name;
         return view('shop.branch', ['products' => $products, 'user' => $user]);
     }
-     public function sp(Request $request)
+     public function s(Request $request)
     {
         $products = Product::where('user_id', 5)->get();
         $user = User::where('id', 5)->get();
         $user = $user[0]->name;
         return view('shop.branch', ['products' => $products, 'user' => $user]);
     }
-     public function a(Request $request)
+     public function sp(Request $request)
     {
         $products = Product::where('user_id', 6)->get();
         $user = User::where('id', 6)->get();
         $user = $user[0]->name;
         return view('shop.branch', ['products' => $products, 'user' => $user]);
     }
-     public function cu(Request $request)
+     public function a(Request $request)
     {
         $products = Product::where('user_id', 7)->get();
         $user = User::where('id', 7)->get();
         $user = $user[0]->name;
         return view('shop.branch', ['products' => $products, 'user' => $user]);
     }
-     public function n(Request $request)
+     public function cu(Request $request)
     {
         $products = Product::where('user_id', 8)->get();
         $user = User::where('id', 8)->get();
+        $user = $user[0]->name;
+        return view('shop.branch', ['products' => $products, 'user' => $user]);
+    }
+     public function n(Request $request)
+    {
+        $products = Product::where('user_id', 9)->get();
+        $user = User::where('id', 9)->get();
         $user = $user[0]->name;
         return view('shop.branch', ['products' => $products, 'user' => $user]);
     }
@@ -257,7 +257,9 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         foreach ($cart->items as $key => $value) {
-            $id = $cart->items[1]['item']['id'];
+
+            $id = $value['item']['id'];
+            // dd($id);
             $data = Product::where('id', $id)->get();
             $prod_qty = $data[0]->qty;
             $title = $data[0]->title;

@@ -4,10 +4,10 @@
 @endsection
 @section('content')
 <br><br>
-<h3 style="color: #FF5D00;"><strong>Detail Pay</strong></h3>
+<h3 style="color: #560081;"><strong>Detail Pay</strong></h3>
 <hr>
 	@foreach($dat as $d)
-			<div class="container">
+			<div class="container" style="padding-bottom: 100px">
 			  <div class="row">
 			    <div class="col-sm">
 			    </div>
